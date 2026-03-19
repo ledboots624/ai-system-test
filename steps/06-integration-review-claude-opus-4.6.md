@@ -79,7 +79,6 @@
   - [SRC-006] [academic_paper/tier2] [Instruction Following in LLMs: Limitations and Reliability](https://arxiv.org/abs/2301.13379) (2023) — primary_source: false
 - **Confidence（確信度）**: high（LLMの非決定論的性質は技術的に確立された事実）
 - **Evidence Strength（根拠の強さ）**: strong
-- **Requirement Level**: MUST（CI/CDゲートとの併用）
 - **実践的含意**: CLAUDE.mdテンプレート（Phase 2で提示）のすべての条項に以下の注記を追加する:
 
 > **⚠️ LLM遵守限界に関する注記**: 本ポリシーのMUST/MUST_NOT条項はLLMへの確率的指示であり、100%の遵守を保証しない。各条項の実施確認はCI/CDゲート（テスト失敗検知・変異テストスコア・依存パッケージ検証）によって客観的に担保すること。CLAUDE.mdを品質保証の唯一の手段として使用してはならない（MUST_NOT）。
@@ -183,7 +182,6 @@
   - [SRC-011] SLSA v1.0（サプライチェーン脅威モデル）
 - **Confidence（確信度）**: high（リスクの存在は学術的に確立。テスト生成固有の影響度はmedium）
 - **Evidence Strength（根拠の強さ）**: strong（リスクの存在）/ weak（テスト生成固有の影響度の定量化）
-- **Requirement Level**: SHOULD（テスト生成プロンプトへの入力ソースの信頼性評価をPre-Design Checklistに追加）
 
 ---
 
@@ -200,7 +198,6 @@
   - [SRC-017] [official_document/tier1] [EU AI Act — Regulation (EU) 2024/1689](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689) (2024-08-01) — primary_source: true
 - **Confidence（確信度）**: high（規制要件の存在と適用制限は明確）
 - **Evidence Strength（根拠の強さ）**: strong
-- **Requirement Level**: MUST（規制産業適用前の追加検証）
 
 ---
 
@@ -211,24 +208,6 @@
 - **Source（情報源）**: [unknown] 一般的なテスト保守コスト研究からの類推 — primary_source: false
 - **Confidence（確信度）**: low（リスクの存在は論理的に妥当だが、定量的根拠なし）
 - **Evidence Strength（根拠の強さ）**: weak
-
----
-
-## Requirement Level Matrix（義務レベルマトリクス）
-
-| 義務レベル | 件数 | 主な要件 | 規格間の解釈差異 |
-|:---|:---:|:---|:---|
-| **MUST** | 12件 | CI失敗テスト0件、契約テスト全緑、依存パッケージ実在確認、TDD各条項（Red確認必須）、仕様ベース生成、CI/CDゲートとの併用、規制産業適用前の追加検証、セキュリティテスト人手判断（脅威モデリング・ペネトレーション） | NIST SSDF PW.7のテスト実施義務はCI/CD経由を明示しない（partial mapping）。EU AI Act文脈では実質全テスト要件がMUST化される傾向 |
-| **SHOULD** | 6件 | 変異テストスコア≥60%（組織推奨値）、高リスクPRの人手追加テスト、AI生成テストレビュー承認、認証・認可テストの人手レビュー、テスト生成入力の信頼性評価、プロンプトバージョン管理 | NIST系のSHOULDは「推奨」だが正当な理由で省略可。規制産業（IEC 62304等）ではSHOULDが実質MUST（認証取得にはほぼ必須） |
-| **MAY** | 4件 | 低リスク定型変更のAI生成Unit、smoke test相当E2E自動化、SAST統合へのAI活用、ファジング補助へのAI活用 | — |
-| **MUST_NOT** | 6件 | コード参照テスト生成、同一セッションでのコード+テスト同時生成（確率的遵守のみ、CI/CDで補完要）、アサーション事後改変、カバレッジ80%の品質証明としての使用、脅威モデリングのAI単独実施、CLAUDE.mdを唯一の品質保証手段とすること | — |
-| **WANT** | 2件 | 変異テスト閾値の段階引き上げ（60→70→80）、AI生成テスト保守コストの定量計測開始 | — |
-
-**解釈差異の重要注記**:
-
-1. **CLAUDE.md内のMUST vs 規格由来のMUST**: CLAUDE.md内のMUST/MUST_NOT条項は**組織自己定義ポリシー**であり、NIST SSDF等の規格由来の義務とは法的根拠が異なる。さらに、LLMへの指示としてのMUSTは**確率的遵守**にとどまる（Finding 5参照）。社内共有資料では両者を明確に区別して記載すること。
-
-2. **規制産業でのSHOULD → 実質MUST化**: IEC 62304（医療機器）・DO-178C（航空宇宙）の文脈では、SHOULDレベルの推奨事項であっても認証審査で未実施の正当化が困難であり、実質MUSTとして扱われる。本資料のSHOULD要件を規制産業に持ち込む場合、すべてMUSTとして再評価すべきである。
 
 ---
 

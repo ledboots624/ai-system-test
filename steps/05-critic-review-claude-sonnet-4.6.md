@@ -12,46 +12,6 @@
 
 ---
 
-## 義務レベル分析（Requirement Level Analysis）
-
-| Level | 件数 | 代表的要件 |
-|:---|:---:|:---|
-| **MUST** | 約14件 | CI失敗テスト0・契約テスト全緑・依存実在確認・TDD各条項・仕様ベース生成 |
-| **SHOULD** | 約6件 | 変異テストスコア≥60%・高リスクPRの人手追加テスト・AI生成テストレビュー承認 |
-| **MAY** | 約3件 | 低リスク定型変更のAI生成Unit自動提案・smoke test相当E2E自動化 |
-| **MUST_NOT** | 約5件 | コード参照テスト生成・同一セッションでのコード+テスト同時生成・アサーション事後改変・カバレッジ80%の品質証明としての使用・セキュリティテストのAI生成 |
-| **WANT** | 1件 | 変異テスト閾値の段階引き上げ（60→70→80） |
-
-**義務レベル解釈における重大リスク（2点）**:
-
-**リスク①: 組織内ルールとスタンダード準拠要件の混同**
-`CLAUDE.md` のMUST/MUST_NOT条項は組織自己定義ポリシーであり、NIST SSDF等の規格由来ではない。両者が同一フォーマットで並記されており、読者が「NIST由来の法的強制力を持つMUST」と「組織推奨のMUST」を区別できない構造になっている。社内共有資料としては誤解リスクが高い。
-
-**リスク②: NIST系SOULDとEU規制圏での実質MUSTの差異について**
-本調査はこの差異を一箇所言及しているが（Standards Mappingの"Nuance"欄）、具体的にどの要件が規制産業では`MUST化`されうるかを示していない。金融・医療・航空宇宙等の規制産業エンジニアが読者にいる場合、この省略は危険である。
-
-**Source**:
-- [official_document/tier1] [EU AI Act, Article 9 – Risk Management System](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689) (2024-08-01) — primary_source: true
-- [official_document/tier1] [IEC 62304 Medical Device Software – Software Life Cycle Processes](https://www.iso.org/standard/38421.html) — primary_source: true
-**Confidence**: high（規制産業向けの補完が欠如しているという評価）
-
----
-
-## 規格間ギャップ（Standard Mapping Gaps）
-
-| 要件 | 現在マッピング | 評価 | リスク・対応策 |
-|:---|:---:|:---:|:---|
-| CI/CDで再現可能なテスト実行 | NIST SP 800-218 PW.7: **direct** | **過大** | SSDF PW.7はテスト実施を要求するが CI/CD パイプライン経由の実行は明示されない。`partial`が妥当。CI/CD自体の根拠は別途 DevSecOps ガイダンスを追加すべき |
-| Mirror-Image防止TDDルール | マッピングなし | **gap** | 標準化団体の規定が存在しないことは正しいが、IEEE 29119-4（テスト技法）とのギャップとして明示すべき。現状は "組織推奨" として扱うことを資料内で宣言すべき |
-| 変異テストスコア≥60% | [unknown]: **gap** | 適切 | 根拠なし。"60%" の数値根拠が調査全体を通じて一切示されておらず、読者が組織に持ち帰って適用する際に「なぜ60か」の説明ができない。**要補強** |
-| CLAUDE.mdによる品質強制 | マッピングなし | **gap** | LLMの指示遵守率は非決定論的。「CLAUDE.mdを書けば遵守される」という前提自体に技術的根拠が必要 |
-
-**最重要 gap への対応策**:
-- "CI/CD direct mapping" → NIST SP 800-218 mapping を `partial` に修正し、補完として [NIST SP 800-204C DevSecOps](https://csrc.nist.gov/pubs/sp/800/204/c/final) をtier1として追加
-- 変異テスト閾値 → 業界実績（例: Stryker社推奨・PiTest wiki）を tier3 として追加するか、組織独自推奨として明記
-
----
-
 ## 論理矛盾・整合性の問題
 
 ### 矛盾1: テストピラミッド比率の信頼度の不整合【重大度: high】
