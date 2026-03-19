@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>調査ハイライト - テスト工学（学習）：Claude Code時代のAI活用システムテスト技法</title>
+<title>再検証結果 - テスト工学（学習）：Claude Code時代のAI活用システムテスト技法</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif; background: #f0fdf4; color: #1e293b; line-height: 1.7;  }
@@ -74,31 +74,22 @@
 <body>
 <div class="header">
   <a href="./index.html" class="back-btn">← トップへ</a>
-  <h1>調査ハイライト</h1>
+  <h1>再検証結果</h1>
 </div>
 <div class="container">
   <div class="section">
-    <div class="section-title">調査ハイライト</div>
-    <div class="section-subtitle">調査結果のスライドです。矢印キーでページ送りできます</div>
-    <iframe class="slides-frame" src="./slides.html"></iframe>
-    <p style="margin-top: 12px; text-align: center;">
-      <a href="./slides.html" target="_blank" style="color: #4299e1; text-decoration: none; font-weight: 600;">スライドを別ウィンドウで開く ↗</a>
-    </p>
-    <div class="visual-card" style="margin-top: 30px;">
-      <img src="./visuals/infographic.png" alt="インフォグラフィック" onclick="openLightbox(this)" style="cursor:pointer;">
-      <div class="caption"><h3>インフォグラフィック</h3><p>調査結果の全体像</p></div>
+    <div class="about-box" style="border-left-color: #e67e22;">
+      <h3>このレポートの読み方</h3>
+      <p>本調査資料の信頼性を再検証した結果です。各主張の確信度や情報源の質を確認できます。</p>
     </div>
-    <div style="margin-top: 40px;">
-      <div class="section-title">図解・チャート</div>
-      <div class="section-subtitle">調査結果を様々な角度から可視化した図</div>
-      <div class="gallery-grid">
-<div class="gallery-item"><img src="./visuals/mindmap.png" alt="マインドマップ" onclick="openLightbox(this)"><div class="gallery-caption"><h3>マインドマップ</h3><p>テーマの全体構造を放射状に整理</p></div></div>
-<div class="gallery-item"><img src="./visuals/matrix.png" alt="比較マトリクス" onclick="openLightbox(this)"><div class="gallery-caption"><h3>比較マトリクス</h3><p>要素の多軸比較表</p></div></div>
-      </div>
+    <div class="quality-grid">
+    <div class="quality-item"><img src="./quality/confidence.png" alt="確信度ヒートマップ" onclick="openLightbox(this)"><div class="quality-caption"><h3>確信度ヒートマップ</h3><p>各主張の確信度（High/Medium/Low）の分布。Lowの主張は追加の裏取りが必要です</p></div></div>
+    <div class="quality-item"><img src="./quality/sources.png" alt="ソース信頼性分布" onclick="openLightbox(this)"><div class="quality-caption"><h3>ソース信頼性分布</h3><p>情報源の信頼性階層（Tier 1〜4）の分布。Tier 3-4に依存する主張は注意が必要です</p></div></div>
     </div>
-    <div class="visual-card" style="margin-top: 30px;">
-      <img src="./diagram.png" alt="関係図" onclick="openLightbox(this)" style="cursor:pointer;">
-      <div class="caption"><h3>関係図</h3><p>テーマの主要要素と関係性を可視化</p></div>
+    <div class="about-box" style="border-left-color: #d97706; margin-top: 30px;">
+      <h3>品質検証レポート（詳細）</h3>
+      <p>AIモデルによる第三者視点の品質検証レポートです。根拠の妥当性、情報の偏り、論理の矛盾、見落とし等を点検しています。</p>
+      <a href="./viewer.html?file=steps/05-critic-review-claude-sonnet-4.6.md" style="display: inline-block; margin-top: 12px; background: #10b981; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">品質検証レポートを読む</a>
     </div>
   </div>
 </div>
