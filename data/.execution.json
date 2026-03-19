@@ -1,0 +1,131 @@
+{
+  "version": "2.5.0",
+  "topic": "テスト工学",
+  "description": "テスト工学（学習）",
+  "completed_at": "2026-03-19T08:40:49Z",
+  "duration_seconds": 2480,
+  "duration_human": "41m20s",
+  "steps": [
+    {
+      "id": "step-1",
+      "step": 1,
+      "role": "information-gathering",
+      "model": "gemini-3-pro-preview",
+      "prompt_focus": "テスト工学の主要技法（同値分割・境界値・デシジョンテーブル・状態遷移・ユースケース）の現代的定義を上級者視点で高速整理し、AI（LLM/Claude Code）をテスト設計・ケース生成・リスク分析に活用する最新事例とツールトレンドを網羅的に調査する。AI生成コード特有の欠陥パターン（ハルシネーション等）に関する文献も収集する。",
+      "depends_on": [],
+      "output_file": "/Users/shige/work/key_project/claude/ai-research/public/ai-system-test/ai-system-test/steps/01-information-gathering-gemini-3-pro-preview.md",
+      "output_bytes": 23022,
+      "evidence_extracted": true,
+      "duration_human": "4m30s",
+      "duration_seconds": 270
+    },
+    {
+      "id": "step-2",
+      "step": 2,
+      "role": "deep-analysis",
+      "model": "claude-sonnet-4.6",
+      "prompt_focus": "AIをテスト設計プロセス（観点出し、テストケース生成、網羅性チェック）に組み込むための具体的技法を分析する。効果的なプロンプト設計パターン（プロンプト駆動テスト）、AIによる仕様書からのテスト設計手法、および古典的技法とAIアプローチの具体的な対比（何が代替可能で何が人間必須か）を深掘りする。",
+      "depends_on": [
+        "step-1"
+      ],
+      "output_file": "/Users/shige/work/key_project/claude/ai-research/public/ai-system-test/ai-system-test/steps/02-deep-analysis-claude-sonnet-4.6.md",
+      "output_bytes": 29375,
+      "evidence_extracted": true,
+      "duration_human": "7m20s",
+      "duration_seconds": 440
+    },
+    {
+      "id": "step-3",
+      "step": 3,
+      "role": "technical-strategy",
+      "model": "gpt-5.3-codex",
+      "prompt_focus": "Claude Codeを用いたAgentic Coding環境におけるテスト戦略を策定する。テストピラミッドの再考（E2E・統合・単体の比重変化）、CI/CDパイプラインへのAIテスト生成の組み込み、AI生成コードに対する防御的テストパターン、および具体的な自動化ワークフローの実装イメージを構築する。",
+      "depends_on": [
+        "step-1",
+        "step-2"
+      ],
+      "output_file": "/Users/shige/work/key_project/claude/ai-research/public/ai-system-test/ai-system-test/steps/03-technical-strategy-gpt-5.3-codex.md",
+      "output_bytes": 11708,
+      "evidence_extracted": false,
+      "duration_human": "6m38s",
+      "duration_seconds": 398
+    },
+    {
+      "id": "step-4",
+      "step": 4,
+      "role": "deep-analysis",
+      "model": "claude-sonnet-4.6",
+      "prompt_focus": "これまでの分析を基に、上級者向けの「学習ロードマップ」と「実践チェックリスト」を設計する。古典的テスト工学の知識体系の中にAI活用スキルをどう位置づけるか体系化し、社内共有資料としての骨子（理論から実践へのフロー）を作成する。",
+      "depends_on": [
+        "step-2",
+        "step-3"
+      ],
+      "output_file": "/Users/shige/work/key_project/claude/ai-research/public/ai-system-test/ai-system-test/steps/04-deep-analysis-claude-sonnet-4.6.md",
+      "output_bytes": 31530,
+      "evidence_extracted": true,
+      "duration_human": "5m33s",
+      "duration_seconds": 333
+    },
+    {
+      "id": "step-5",
+      "step": 5,
+      "role": "critic-review",
+      "model": "claude-sonnet-4.6",
+      "prompt_focus": "策定されたAI活用テスト戦略に対し、経験豊富なQAエンジニアの視点で批判的レビューを行う。AIによるテスト設計の盲点、過信リスク、コンプライアンス上の課題、複雑なドメインロジックにおける限界を指摘し、人間の介入が不可欠な領域を明確化する。",
+      "depends_on": [
+        "step-3",
+        "step-4"
+      ],
+      "output_file": "/Users/shige/work/key_project/claude/ai-research/public/ai-system-test/ai-system-test/steps/05-critic-review-claude-sonnet-4.6.md",
+      "output_bytes": 26541,
+      "evidence_extracted": false,
+      "duration_human": "5m4s",
+      "duration_seconds": 304
+    },
+    {
+      "id": "step-6",
+      "step": 6,
+      "role": "integration-review",
+      "model": "claude-opus-4.6",
+      "prompt_focus": "全ステップの成果を統合し、社内共有資料として完成させる。テスト工学の原理原則を堅持しつつ、Claude Code時代の新しい実践知（AI活用技法・リスク管理・自動化戦略）をバランスよく配置し、上級者が即実践できるレベルの洞察を提供する。",
+      "depends_on": [
+        "step-4",
+        "step-5"
+      ],
+      "output_file": "/Users/shige/work/key_project/claude/ai-research/public/ai-system-test/ai-system-test/steps/06-integration-review-claude-opus-4.6.md",
+      "output_bytes": 43275,
+      "evidence_extracted": true,
+      "duration_human": "9m44s",
+      "duration_seconds": 584
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "README.md",
+      "bytes": 25062
+    },
+    {
+      "file": "sources.json",
+      "bytes": 26915
+    },
+    {
+      "file": "slides.html",
+      "bytes": 178258
+    },
+    {
+      "file": "slides.pdf",
+      "bytes": 1271418
+    }
+  ],
+  "context_file": "/Users/shige/work/key_project/claude/ai-research/ai-research-agent/context-research.json",
+  "operations": [
+    {
+      "operation": "finalize",
+      "timestamp": "2026-03-19T09:14:50Z",
+      "duration_seconds": 1128,
+      "duration_human": "18m48s"
+    }
+  ],
+  "total_cumulative_seconds": 3608,
+  "last_operation_at": "2026-03-19T09:14:50Z"
+}

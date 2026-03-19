@@ -1,0 +1,88 @@
+{
+  "step": 1,
+  "role": "information-gathering",
+  "model": "gemini-3-pro-preview",
+  "extracted_at": "2026-03-19T08:02:24Z",
+  "claims": [
+    {
+      "claim": "伝統的技法は「テストケース作成の手法」から「AIの推論をガイドし、生成物を監査するための論理フレームワーク」へと役割を変えている。",
+      "evidence": "同値分割・境界値分析・デシジョンテーブル・状態遷移テスト・ユースケーステストの各技法について古典的定義とAI時代における再定義を比較した表が示されており、各技法がAIへの指示書または生成物監査のフレームワークとして機能することが説明されている。",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "Equivalence Partitioning & Boundary Value Analysis in Software Testing",
+        "source_locator": "https://www.commencis.com/thoughts/unleashing-the-power-of-equivalence-partitioning-and-boundary-value-analysis-in-software-testing/",
+        "access_date": "unknown",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "テストコードをAIとの「契約書」として機能させることで、要件の誤解釈を早期に発見できる。",
+      "evidence": "プロンプト駆動型テスト（PDT）ワークフローにおいて、仕様定義→テストケース生成→人間レビュー→テストコード実装→プロダクトコード実装というフローが示されており、実装前にAIにテストを生成・承認させることで仕様の曖昧さを具体化し誤解釈を早期検出できると説明されている。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "The complete guide for TDD with LLMs",
+        "source_locator": "https://langwatch.ai/blog/tdd-with-llms",
+        "access_date": "unknown",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "AI時代のテスト設計において、同値分割・境界値分析は「人間がテストケースを書くための技法」から「AIに正確なテストコードを書かせるための指示言語」へと役割を変えている。",
+      "evidence": "各技法のAI時代における再定義として、同値分割は「プロンプトの基礎語彙」、境界値分析は「AIハルシネーション検出器」として機能することが表形式で示されており、AIに「有効同値クラス」「無効同値クラス」を明示させる具体的な活用法が説明されている。",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "LLM4TDD: Best Practices for Test Driven Development Using Large Language Models",
+        "source_locator": "https://scopelabuta.github.io/files/LLM4CODE.pdf",
+        "access_date": "unknown",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "AI生成コードは単体レベルでは正しい（コンパイルが通る）ことが多いが、結合時に文脈の不一致で失敗する傾向があるため、統合テストの比重を高めるべきである。",
+      "evidence": "テストピラミッドのダイヤモンド型への変容として、Unit Testsの縮小とIntegration Testsの拡大が推奨されている。AIが生成したモジュール間の接合部におけるAPI仕様の不一致・データ型の不整合を検出するためにIntegration Tests層を厚くすることが説明されており「ここが主戦場」と明記されている。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "The Test Pyramid 2.0: AI-assisted testing across the pyramid",
+        "source_locator": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1695965/full",
+        "access_date": "2025-01",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "`CLAUDE.md` にテスト戦略（TDDの強制、禁止事項）を明記することで、AIエージェントの自律的なコーディング品質を著しく安定化できる。",
+      "evidence": "CLAUDE.mdの推奨設定例として、使用フレームワーク・TDDワークフロー（Red→Green順序）の強制・インテグレーションテストでのDBモック禁止などの具体的設定が示されており、AIエージェントへのテスト方針を「憲法」として定義することで品質統制が可能と説明されている。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "Best Practices for Claude Code",
+        "source_locator": "https://code.claude.com/docs/en/best-practices",
+        "access_date": "unknown",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    }
+  ]
+}

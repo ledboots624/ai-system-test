@@ -1,0 +1,111 @@
+<mxGraphModel dx="50" dy="50" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="title" value="情報源 信頼性分布チャート" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#f5f5f5;strokeColor=#666666;align=center;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="20" width="860" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="tier1_group" value="Tier 1: 公式・公的機関 (Official Documents)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;verticalAlign=top;align=left;spacingLeft=10;spacingTop=10;arcSize=5;" vertex="1" parent="1">
+      <mxGeometry x="40" y="100" width="860" height="240" as="geometry" />
+    </mxCell>
+    <mxCell id="t1_1" value="★ [SRC-004] Anthropic Claude Usage Policy&#10;Type: official_document (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#6C8EBF;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="150" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t1_2" value="★ [SRC-005] Best Practices for Claude Code&#10;Type: official_document (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#6C8EBF;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="150" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t1_3" value="★ [SRC-013] IEC 62304: Medical Device Software&#10;Type: official_document (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#6C8EBF;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="150" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t1_4" value="★ [SRC-016] NIST SP 800-218 SSDF&#10;Type: official_document (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#6C8EBF;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="240" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t1_5" value="★ [SRC-017] OWASP Web Security Testing Guide&#10;Type: official_document (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#6C8EBF;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="240" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="tier2_group" value="Tier 2: 学術・研究機関 (Academic &amp; Research)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#D5E8D4;strokeColor=#82B366;verticalAlign=top;align=left;spacingLeft=10;spacingTop=10;arcSize=5;" vertex="1" parent="1">
+      <mxGeometry x="40" y="360" width="860" height="420" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_1" value="★ [SRC-021] The Prompt Alchemist&#10;Type: academic_paper (Refs: 2)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="410" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_2" value="[SRC-002] Code Hallucinations in LLMs Review&#10;Type: academic_paper (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="410" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_3" value="[SRC-003] Adaptive Human-in-the-Loop Testing&#10;Type: academic_paper (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="410" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_4" value="[SRC-006] Beyond Blind Spots: Analytic Hints&#10;Type: academic_paper (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="500" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_5" value="[SRC-011] CodeAssert: Multi-Provider Evaluation&#10;Type: academic_paper (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="500" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_6" value="[SRC-012] Equivalence Partitioning &amp; BVA&#10;Type: academic_paper (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="500" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_7" value="[SRC-014] LLM4TDD: Best Practices for TDD&#10;Type: academic_paper (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="590" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_8" value="[SRC-018] Prompt Driven Test Generation&#10;Type: academic_paper (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="590" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_9" value="[SRC-019] Prompt Injection Attacks&#10;Type: academic_paper (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="590" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t2_10" value="[SRC-025] Human Capabilities Complement AI&#10;Type: industry_report (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#82B366;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="680" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="tier3_group" value="Tier 3: 業界レポート・技術ブログ (Industry Reports)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#FFF2CC;strokeColor=#D6B656;verticalAlign=top;align=left;spacingLeft=10;spacingTop=10;arcSize=5;" vertex="1" parent="1">
+      <mxGeometry x="40" y="800" width="860" height="420" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_1" value="[SRC-008] Claude Code Best Practices&#10;Type: industry_report (Refs: 3)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="850" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_2" value="[SRC-023] The Test Pyramid 2.0&#10;Type: industry_report (Refs: 3)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="850" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_3" value="[SRC-022] The Prompt Alchemist (Report)&#10;Type: industry_report (Refs: 2)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="850" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_4" value="[SRC-007] Boundary Analysis &amp; LLM&#10;Type: industry_report (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="940" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_5" value="[SRC-009] Claude Code TDD Guide&#10;Type: industry_report (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="940" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_6" value="[SRC-010] 80% Coverage Sweet Spot&#10;Type: industry_report (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="940" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_7" value="[SRC-015] Mastering LLM-Generated Tests&#10;Type: industry_report (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="1030" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_8" value="[SRC-020] Testing AI-Generated Code&#10;Type: industry_report (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="1030" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_9" value="[SRC-024] The complete guide for TDD&#10;Type: industry_report (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="1030" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_10" value="[SRC-026] テスト保守コスト研究からの類推&#10;Type: unknown (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="1120" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_11" value="[SRC-028] 本調査分析統合&#10;Type: unknown (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="1120" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t3_12" value="[SRC-029] 本調査統合レビュー&#10;Type: unknown (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#D6B656;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="1120" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="tier4_group" value="Tier 4: コミュニティ・推論・帰納 (Community &amp; Inference)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;fontStyle=1;fillColor=#F8CECC;strokeColor=#B85450;verticalAlign=top;align=left;spacingLeft=10;spacingTop=10;arcSize=5;" vertex="1" parent="1">
+      <mxGeometry x="40" y="1240" width="860" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="t4_1" value="[SRC-001] 3層モデルの設計原則より演繹&#10;Type: unknown (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#B85450;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="1290" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t4_2" value="[SRC-027] 本調査の分析統合による帰納&#10;Type: unknown (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#B85450;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="340" y="1290" width="260" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="t4_3" value="[SRC-030] 複数の実務事例からの帰納&#10;Type: unknown (Refs: 1)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#B85450;align=left;spacing=5;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="620" y="1290" width="260" height="80" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

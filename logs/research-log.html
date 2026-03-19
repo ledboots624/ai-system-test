@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>詳細ログ - テスト工学（学習）：Claude Code時代のAI活用システムテスト技法</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { background: #1a1a2e; }
+  body { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; background: #1a1a2e; color: #e2e8f0; line-height: 1.6; min-height: 100vh; }
+  .header { background: linear-gradient(135deg, #1a2e1a 0%, #1e3e1e 50%, #0f4f2f 100%); color: #e2e8f0; padding: 24px 40px; display: flex; align-items: center; gap: 20px; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; color: #fff; background: rgba(255,255,255,0.12); text-decoration: none; font-size: 0.85em; font-weight: 600; padding: 6px 16px; border-radius: 8px; }
+  .back-btn:hover { background: rgba(255,255,255,0.22); }
+  .header h1 { font-size: 1.3em; flex: 1; font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif; }
+  .controls { padding: 12px 40px; background: #16213e; border-bottom: 1px solid #2d3748; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .controls label { font-size: 0.8em; color: #a0aec0; }
+  .controls select, .controls input { background: #1a1a2e; color: #e2e8f0; border: 1px solid #4a5568; padding: 4px 8px; border-radius: 4px; font-size: 0.8em; }
+  .log-container { padding: 20px 40px; overflow-x: auto; background: #1a1a2e; min-width: 0; }
+  .log-line { padding: 3px 8px; white-space: pre; font-size: 0.85em; background: #1a1a2e; border-radius: 2px; }
+  .log-line:hover { background: #1e2a3e; }
+  .log-line .ts { color: #718096; }
+  .log-line .level-INFO { color: #48bb78; font-weight: 700; }
+  .log-line .level-WARN { color: #ecc94b; font-weight: 700; }
+  .log-line .level-ERROR { color: #fc8181; font-weight: 700; }
+  .log-line .level-DEBUG { color: #63b3ed; font-weight: 700; }
+  .log-line .model { color: #b794f4; }
+  .log-line .duration { color: #f6ad55; }
+  .log-line .step-marker { color: #63b3ed; font-weight: 700; }
+  .log-line .separator { color: #4299e1; font-weight: 700; }
+  .stats { padding: 16px 40px; background: #16213e; border-top: 1px solid #2d3748; font-size: 0.8em; color: #a0aec0; display: flex; gap: 24px; flex-wrap: wrap; }
+  .stats span { display: inline-flex; align-items: center; gap: 4px; }
+  .stats .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dot-info { background: #48bb78; }
+  .dot-warn { background: #ecc94b; }
+  .dot-error { background: #fc8181; }
+  @media (max-width: 768px) { .header, .log-container, .controls, .stats { padding-left: 16px; padding-right: 16px; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="../records.html" class="back-btn">&larr; 調査記録へ</a>
+  <h1>詳細ログ</h1>
+</div>
+<div class="controls">
+  <label>フィルタ:</label>
+  <select id="levelFilter" onchange="filterLogs()">
+    <option value="all">全て</option>
+    <option value="INFO">INFO</option>
+    <option value="WARN">WARN</option>
+    <option value="ERROR">ERROR</option>
+  </select>
+  <label>検索:</label>
+  <input type="text" id="searchBox" placeholder="キーワード..." oninput="filterLogs()" style="width: 200px;">
+</div>
+<div class="log-container" id="logContainer">
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 16:59:28 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> AI Research Agent v2.5.0 <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 16:59:29 </span><span class="level-INFO">INFO</span>] トピック: テスト工学</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 16:59:29 </span><span class="level-INFO">INFO</span>] 説明: テスト工学（学習）</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 16:59:29 </span><span class="level-INFO">INFO</span>] コンテキスト: [path-redacted] → ./data/.context.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 16:59:29 </span><span class="level-INFO">INFO</span>] ワークスペース: ./</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 16:59:29 </span><span class="level-INFO">INFO</span>] パイプライン実行開始: 6ステップ (開始: <span class="step-marker">Step 1</span>)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 16:59:29 </span><span class="level-INFO">INFO</span>] モデル呼び出し: gemini-3-pro-preview → ./steps/01-information-gathering-gemini-3-pro-preview.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:02:24 </span><span class="level-INFO">INFO</span>] モデル応答完了: gemini-3-pro-preview (2m55s) → ./steps/01-information-gathering-gemini-3-pro-preview.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:02:24 </span><span class="level-INFO">INFO</span>] Evidence 抽出: ./steps/01-information-gathering-gemini-3-pro-preview.evidence.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:03:59 </span><span class="level-INFO">INFO</span>] Evidence JSON 生成（python3 fallback）: ./steps/01-information-gathering-gemini-3-pro-preview.evidence.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:04:00 </span><span class="level-INFO">INFO</span>] <span class="step-marker">Step 1</span> 完了 (4m30s): information-gathering by gemini-3-pro-preview</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:04:00 </span><span class="level-INFO">INFO</span>] モデル呼び出し: claude-sonnet-4.6 → ./steps/02-deep-analysis-claude-sonnet-4.6.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:08:20 </span><span class="level-INFO">INFO</span>] モデル応答完了: claude-sonnet-4.6 (4m20s) → ./steps/02-deep-analysis-claude-sonnet-4.6.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:08:20 </span><span class="level-INFO">INFO</span>] Evidence 抽出: ./steps/02-deep-analysis-claude-sonnet-4.6.evidence.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:11:20 </span><span class="level-INFO">INFO</span>] Evidence JSON 生成: ./steps/02-deep-analysis-claude-sonnet-4.6.evidence.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:11:20 </span><span class="level-INFO">INFO</span>] <span class="step-marker">Step 2</span> 完了 (7m20s): deep-analysis by claude-sonnet-4.6</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:11:20 </span><span class="level-INFO">INFO</span>] モデル呼び出し: gpt-5.3-codex → ./steps/03-technical-strategy-gpt-5.3-codex.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:13:34 </span><span class="level-INFO">INFO</span>] モデル応答完了: gpt-5.3-codex (2m14s) → ./steps/03-technical-strategy-gpt-5.3-codex.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:13:34 </span><span class="level-INFO">INFO</span>] Evidence 抽出: ./steps/03-technical-strategy-gpt-5.3-codex.evidence.json</div>
+<div class="log-line" data-level="WARN"><span class="ts">[2026-03-19 17:17:58 </span><span class="level-WARN">WARN</span>] Evidence JSON 抽出失敗: ./steps/03-technical-strategy-gpt-5.3-codex.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:17:58 </span><span class="level-INFO">INFO</span>] <span class="step-marker">Step 3</span> 完了 (6m38s): technical-strategy by gpt-5.3-codex</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:17:58 </span><span class="level-INFO">INFO</span>] モデル呼び出し: claude-sonnet-4.6 → ./steps/04-deep-analysis-claude-sonnet-4.6.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:21:47 </span><span class="level-INFO">INFO</span>] モデル応答完了: claude-sonnet-4.6 (3m49s) → ./steps/04-deep-analysis-claude-sonnet-4.6.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:21:47 </span><span class="level-INFO">INFO</span>] Evidence 抽出: ./steps/04-deep-analysis-claude-sonnet-4.6.evidence.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:23:31 </span><span class="level-INFO">INFO</span>] Evidence JSON 生成（python3 fallback）: ./steps/04-deep-analysis-claude-sonnet-4.6.evidence.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:23:31 </span><span class="level-INFO">INFO</span>] <span class="step-marker">Step 4</span> 完了 (5m33s): deep-analysis by claude-sonnet-4.6</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:23:31 </span><span class="level-INFO">INFO</span>] モデル呼び出し: claude-sonnet-4.6 → ./steps/05-critic-review-claude-sonnet-4.6.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:28:35 </span><span class="level-INFO">INFO</span>] モデル応答完了: claude-sonnet-4.6 (5m4s) → ./steps/05-critic-review-claude-sonnet-4.6.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:28:35 </span><span class="level-INFO">INFO</span>] <span class="step-marker">Step 5</span> 完了 (5m4s): critic-review by claude-sonnet-4.6</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:28:35 </span><span class="level-INFO">INFO</span>] モデル呼び出し: claude-opus-4.6 → ./steps/06-integration-review-claude-opus-4.6.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:33:59 </span><span class="level-INFO">INFO</span>] モデル応答完了: claude-opus-4.6 (5m24s) → ./steps/06-integration-review-claude-opus-4.6.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:33:59 </span><span class="level-INFO">INFO</span>] Evidence 抽出: ./steps/06-integration-review-claude-opus-4.6.evidence.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:19 </span><span class="level-INFO">INFO</span>] Evidence JSON 生成: ./steps/06-integration-review-claude-opus-4.6.evidence.json</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:19 </span><span class="level-INFO">INFO</span>] <span class="step-marker">Step 6</span> 完了 (9m44s): integration-review by claude-opus-4.6</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:19 </span><span class="level-INFO">INFO</span>] 全ステップ完了</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:19 </span><span class="level-INFO">INFO</span>] Validation 実行中...</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:20 </span><span class="level-INFO">INFO</span>] Validation 完了: PARTIAL (claims: 36, high: 11, medium: 20, low: 5, tier1: 5, tier2: 11, tier3: 17, tier4: 3, primary: 7, req_must: 3, req_should: 12, std_direct: 5, std_partial: 5, std_gap: 1)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:20 </span><span class="level-INFO">INFO</span>] パイプライン実行時間: 38m51s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:20 </span><span class="level-INFO">INFO</span>] Sources Registry 生成中...</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:20 </span><span class="level-INFO">INFO</span>] Sources Registry 生成完了: ./data/sources.json (30 sources)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:20 </span><span class="level-INFO">INFO</span>] sources.json 生成: &lt;1s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:21 </span><span class="level-INFO">INFO</span>] README 生成完了: ./README.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:21 </span><span class="level-INFO">INFO</span>] README 生成: 1s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:38:21 </span><span class="level-INFO">INFO</span>] 図解生成中... (model: gemini-3-pro-preview, format: draw.io XML)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:39:21 </span><span class="level-INFO">INFO</span>] draw.io XML 生成完了: ./data/diagram.drawio</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:39:21 </span><span class="level-INFO">INFO</span>] draw.io CLI が見つかりません。SVG/PNG 変換をスキップ</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:39:21 </span><span class="level-INFO">INFO</span>] diagram 生成: 1m0s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:39:21 </span><span class="level-INFO">INFO</span>] スライド生成中... (model: gemini-3-pro-preview)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:40:23 </span><span class="level-INFO">INFO</span>] スライドMD 生成完了: ./data/slides.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:40:23 </span><span class="level-INFO">INFO</span>] 画像スライド 0枚 + エンディング挿入完了</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:40:23 </span><span class="level-INFO">INFO</span>] スライド変換中... (marp-cli)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:40:33 </span><span class="level-INFO">INFO</span>] HTML スライド生成完了: ./slides.html</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:40:48 </span><span class="level-INFO">INFO</span>] PDF スライド生成完了: ./slides.pdf</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:40:49 </span><span class="level-INFO">INFO</span>] slides 生成: 1m27s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:40:49 </span><span class="level-INFO">INFO</span>] 総実行時間: 41m20s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:40:49 </span><span class="level-INFO">INFO</span>] .execution.json 生成完了</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:56:02 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> 統合ファイナライズモード <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:56:02 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> 統合ファイナライズ <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:56:02 </span><span class="level-INFO">INFO</span>] ワークスペース: .</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:56:02 </span><span class="level-INFO">INFO</span>] <span class="step-marker">Step 1</span>: 統合分析（Claude Opus）</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:56:02 </span><span class="level-INFO">INFO</span>] モデル呼び出し: claude-opus-4.6 → ./data/SYNTHESIS.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:58:55 </span><span class="level-INFO">INFO</span>] モデル応答完了: claude-opus-4.6 (2m53s) → ./data/SYNTHESIS.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:58:55 </span><span class="level-INFO">INFO</span>] 統合分析完了 (2m53s)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:58:55 </span><span class="level-INFO">INFO</span>] <span class="step-marker">Step 2</span>: FINAL_REPORT.md 生成（Claude Sonnet）</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 17:58:55 </span><span class="level-INFO">INFO</span>] モデル呼び出し: claude-sonnet-4.6 → ./FINAL_REPORT.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:02:09 </span><span class="level-INFO">INFO</span>] モデル応答完了: claude-sonnet-4.6 (3m14s) → ./FINAL_REPORT.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:02:09 </span><span class="level-INFO">INFO</span>] FINAL_REPORT.md 生成完了 (3m14s)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:02:09 </span><span class="level-INFO">INFO</span>] Sources Registry 生成中...</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:02:09 </span><span class="level-INFO">INFO</span>] Sources Registry 生成完了: ./data/sources.json (30 sources)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:02:09 </span><span class="level-INFO">INFO</span>] sources.json 再生成: &lt;1s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:02:10 </span><span class="level-INFO">INFO</span>] README 生成完了: ./README.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:02:10 </span><span class="level-INFO">INFO</span>] README 再生成: 1s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:02:10 </span><span class="level-INFO">INFO</span>] 図解生成中... (model: gemini-3-pro-preview, format: draw.io XML)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:04:39 </span><span class="level-INFO">INFO</span>] draw.io XML 生成完了: ./data/diagram.drawio</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:04:39 </span><span class="level-INFO">INFO</span>] draw.io CLI が見つかりません。SVG/PNG 変換をスキップ</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:04:39 </span><span class="level-INFO">INFO</span>] diagram 再生成: 2m29s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:04:40 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> テーマ可視化シーケンス <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:04:40 </span><span class="level-INFO">INFO</span>] テーマ可視化タイプ自動選択中...</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:04:51 </span><span class="level-INFO">INFO</span>] テーマ可視化タイプ: mindmap,matrix</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:04:52 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> 可視化生成: infographic (→ visuals/) <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:04:52 </span><span class="level-INFO">INFO</span>] draw.io XML 生成中... (type: infographic, model: gemini-3-pro-preview)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:06:01 </span><span class="level-INFO">INFO</span>] infographic.drawio 生成完了 (1m9s)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:06:01 </span><span class="level-INFO">INFO</span>] draw.io CLI が見つかりません。SVG/PNG 変換をスキップ</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:06:01 </span><span class="level-INFO">INFO</span>] infographic 生成: 1m21s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:06:01 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> 可視化生成: mindmap (→ visuals/) <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:06:01 </span><span class="level-INFO">INFO</span>] draw.io XML 生成中... (type: mindmap, model: gemini-3-pro-preview)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:07:08 </span><span class="level-INFO">INFO</span>] mindmap.drawio 生成完了 (1m7s)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:07:08 </span><span class="level-INFO">INFO</span>] draw.io CLI が見つかりません。SVG/PNG 変換をスキップ</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:07:08 </span><span class="level-INFO">INFO</span>] mindmap 生成: 1m7s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:07:08 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> 可視化生成: matrix (→ visuals/) <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:07:08 </span><span class="level-INFO">INFO</span>] draw.io XML 生成中... (type: matrix, model: gemini-3-pro-preview)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:08:38 </span><span class="level-INFO">INFO</span>] matrix.drawio 生成完了 (1m30s)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:08:38 </span><span class="level-INFO">INFO</span>] draw.io CLI が見つかりません。SVG/PNG 変換をスキップ</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:08:38 </span><span class="level-INFO">INFO</span>] matrix 生成: 1m30s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:08:38 </span><span class="level-INFO">INFO</span>] レート制限対策: 15秒待機...</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:08:53 </span><span class="level-INFO">INFO</span>] スライド生成中... (model: gemini-3-pro-preview)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:04 </span><span class="level-INFO">INFO</span>] スライドMD 生成完了: ./data/slides.md</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:04 </span><span class="level-INFO">INFO</span>] 画像スライド 0枚 + エンディング挿入完了</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:04 </span><span class="level-INFO">INFO</span>] スライド変換中... (marp-cli)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:07 </span><span class="level-INFO">INFO</span>] HTML スライド生成完了: ./slides.html</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:13 </span><span class="level-INFO">INFO</span>] PDF スライド生成完了: ./slides.pdf</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:13 </span><span class="level-INFO">INFO</span>] slides 再生成: 1m20s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:13 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> 品質メタデータシーケンス <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:13 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> 可視化生成: confidence (→ quality/) <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:10:13 </span><span class="level-INFO">INFO</span>] draw.io XML 生成中... (type: confidence, model: gemini-3-pro-preview)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:13:40 </span><span class="level-INFO">INFO</span>] confidence.drawio 生成完了 (3m27s)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:13:40 </span><span class="level-INFO">INFO</span>] draw.io CLI が見つかりません。SVG/PNG 変換をスキップ</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:13:40 </span><span class="level-INFO">INFO</span>] confidence（品質用）生成: 3m27s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:13:40 </span><span class="level-INFO">INFO</span>] <span class="separator">===</span> 可視化生成: sources (→ quality/) <span class="separator">===</span></div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:13:41 </span><span class="level-INFO">INFO</span>] draw.io XML 生成中... (type: sources, model: gemini-3-pro-preview)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] sources.drawio 生成完了 (1m2s)</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] draw.io CLI が見つかりません。SVG/PNG 変換をスキップ</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] sources（品質用）生成: 1m3s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] 調査フローチャート生成中（スクリプト直接生成）...</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] フローチャート XML 生成完了: ./quality/flow.drawio</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] draw.io CLI が見つかりません。フローチャート画像変換スキップ</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] フローチャート生成: &lt;1s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] フローチャート生成: &lt;1s</div>
+<div class="log-line" data-level="INFO"><span class="ts">[2026-03-19 18:14:43 </span><span class="level-INFO">INFO</span>] ログHTML生成中...</div>
+</div>
+<div class="stats">
+  <span><span class="dot dot-info"></span> INFO: 118</span>
+  <span><span class="dot dot-warn"></span> WARN: 1</span>
+  <span><span class="dot dot-error"></span> ERROR: 0</span>
+  <span>合計: 119 行</span>
+</div>
+<script>
+function filterLogs() {
+  var level = document.getElementById('levelFilter').value;
+  var search = document.getElementById('searchBox').value.toLowerCase();
+  var lines = document.querySelectorAll('.log-line');
+  lines.forEach(function(el) {
+    var show = true;
+    if (level !== 'all' && el.getAttribute('data-level') !== level) show = false;
+    if (search && el.textContent.toLowerCase().indexOf(search) === -1) show = false;
+    el.style.display = show ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

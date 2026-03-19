@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Viewer</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif; background: #f0fdf4; color: #1e293b; line-height: 1.7; }
+
+  .header { background: linear-gradient(135deg, #1a2e1a 0%, #1e3e1e 50%, #0f4f2f 100%); color: #e2e8f0; padding: 24px 40px; display: flex; align-items: center; gap: 20px; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; color: #fff; background: rgba(255,255,255,0.12); text-decoration: none; font-size: 0.85em; font-weight: 600; padding: 6px 16px; border-radius: 8px; transition: background 0.2s; }
+  .back-btn:hover { background: rgba(255,255,255,0.22); }
+  .header h1 { font-size: 1.15em; flex: 1; font-weight: 400; color: #94a3b8; }
+  .header .doc-badge { display: inline-block; background: linear-gradient(135deg, #34d399, #059669); color: #fff; font-size: 0.75em; font-weight: 700; padding: 4px 12px; border-radius: 12px; margin-right: 10px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+  .content { background: #ffffff; border-radius: 12px; padding: 40px 44px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); line-height: 1.85; font-size: 0.98em; }
+  .content h1 { font-size: 1.7em; color: #0f172a; margin: 1.4em 0 0.5em; padding-bottom: 10px; border-bottom: 3px solid #10b981; }
+  .content h1:first-child { margin-top: 0; }
+  .content h2 { font-size: 1.35em; color: #047857; margin: 1.3em 0 0.4em; padding-bottom: 6px; border-bottom: 1px solid #d1fae5; }
+  .content h3 { font-size: 1.1em; color: #475569; margin: 1.1em 0 0.3em; }
+  .content h4 { font-size: 1em; color: #64748b; margin: 1em 0 0.2em; }
+  .content p { margin: 0.7em 0; }
+  .content ul, .content ol { padding-left: 26px; margin: 0.7em 0; }
+  .content li { margin: 0.35em 0; }
+  .content blockquote { border-left: 4px solid #10b981; padding: 14px 22px; margin: 1.2em 0; background: #ecfdf5; border-radius: 0 10px 10px 0; color: #047857; font-size: 0.95em; }
+  .content code { background: #d1fae5; padding: 2px 7px; border-radius: 5px; font-size: 0.88em; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; color: #b91c1c; }
+  .content pre { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #e2e8f0; padding: 18px 22px; border-radius: 10px; overflow-x: auto; margin: 1.2em 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .content pre code { background: none; padding: 0; color: inherit; }
+  .content table { width: 100%; border-collapse: collapse; margin: 1.2em 0; font-size: 0.92em; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); background: #ffffff; }
+  .content .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2em 0; border-radius: 8px; background: #ffffff; }
+  .content .table-wrap table { margin: 0; }
+  .content th { background: linear-gradient(135deg, #d1fae5, #d1fae5); padding: 11px 14px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid #d1fae5; }
+  .content td { padding: 10px 14px; border: 1px solid #d1fae5; }
+  .content tr:nth-child(even) { background: #f0fdf4; }
+  .content tr:hover { background: #d1fae5; }
+  .content hr { border: none; border-top: 2px solid #d1fae5; margin: 2em 0; }
+  .content strong { color: #0f172a; }
+  .content a { color: #10b981; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .content a:hover { border-bottom-color: #10b981; }
+  .content img { max-width: 100%; border-radius: 10px; margin: 1.2em 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+  .role-banner { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; padding: 18px 22px; margin-bottom: 28px; }
+  .role-banner h3 { color: #047857; font-size: 1em; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .role-banner h3::before { content: ''; display: inline-block; width: 4px; height: 18px; background: #10b981; border-radius: 2px; }
+  .role-banner p { color: #475569; font-size: 0.9em; line-height: 1.7; margin: 0; }
+  .role-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .role-meta-item { display: inline-flex; align-items: center; gap: 5px; background: #ffffff; border: 1px solid #a7f3d0; border-radius: 6px; padding: 4px 10px; font-size: 0.8em; color: #475569; }
+  .role-meta-item .label { color: #94a3b8; }
+  .role-meta-item .value { color: #1e293b; font-weight: 600; }
+
+  .loading { text-align: center; padding: 80px 20px; color: #94a3b8; font-size: 1.1em; }
+  .loading::before { content: ''; display: block; width: 36px; height: 36px; border: 3px solid #d1fae5; border-top-color: #10b981; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .error { text-align: center; padding: 80px 20px; color: #e53e3e; font-size: 1.05em; }
+
+  .footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 24px; font-size: 0.85em; margin-top: 40px; }
+  .footer a { color: #6ee7b7; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  
+
+  @media (max-width: 768px) {
+    .content { padding: 24px 20px; margin: 0; border-radius: 0; }
+    .header { padding: 16px 20px; flex-wrap: wrap; }
+    .container { padding: 15px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="./index.html" class="back-btn">← トップへ</a>
+  <h1><span class="doc-badge" id="doc-badge">STEP</span><span id="doc-title">読み込み中...</span></h1>
+</div>
+<div class="container">
+  <div class="content" id="content">
+    <div class="loading">読み込み中...</div>
+  </div>
+</div>
+<div class="footer">
+  <a href="" id="raw-link">ソースを表示</a> &nbsp;|&nbsp;
+  <a href="./index.html">トップへ</a>
+</div>
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var file = params.get('file');
+  if (!file) {
+    document.getElementById('content').innerHTML = '<div class="error">ファイルが指定されていません。<br>使い方: viewer.html?file=steps/01-xxx.md</div>';
+    return;
+  }
+  document.getElementById('raw-link').href = file;
+  var fname = decodeURIComponent(file.split('/').pop());
+  document.getElementById('doc-title').textContent = fname;
+  document.title = fname + ' - Document Viewer';
+
+  // ステップの役割を判定し、バッジ＋説明バナーを設定
+  var badge = document.getElementById('doc-badge');
+  var roleInfo = { badge: 'DOC', color: '', title: '', desc: '' };
+
+  if (fname.match(/information-gathering/)) {
+    var sn = fname.match(/^(\d+)-/);
+    roleInfo = { badge: 'STEP ' + (sn ? parseInt(sn[1]) : ''), color: '',
+      title: '情報収集ステップ',
+      desc: 'このステップでは、調査テーマに関する基礎情報を幅広く収集しています。AIの学習データから関連する事実・データ・事例を抽出し、後続の分析ステップの土台となる情報を整理しています。各情報には出典（Source）と信頼性階層（Tier）が付与されています。' };
+  } else if (fname.match(/deep-analysis/)) {
+    var sn = fname.match(/^(\d+)-/);
+    roleInfo = { badge: 'STEP ' + (sn ? parseInt(sn[1]) : ''), color: '',
+      title: '深層分析ステップ',
+      desc: 'このステップでは、収集された情報を多角的に分析しています。単なる事実の羅列ではなく、因果関係・背景・影響・構造を深掘りし、各主張に確信度（High/Medium/Low）を付与しています。複数の観点から証拠を検討し、テーマの本質に迫る分析を行っています。' };
+  } else if (fname.match(/technical-strategy/)) {
+    var sn = fname.match(/^(\d+)-/);
+    roleInfo = { badge: 'STEP ' + (sn ? parseInt(sn[1]) : ''), color: '',
+      title: '技術戦略ステップ',
+      desc: 'このステップでは、調査結果に基づいて実践的な戦略・方針を策定しています。技術的な実現可能性を評価し、具体的なアクションプランや推奨事項を提示しています。' };
+  } else if (fname.match(/critic-review/)) {
+    var sn = fname.match(/^(\d+)-/);
+    roleInfo = { badge: 'STEP ' + (sn ? parseInt(sn[1]) : ''), color: 'linear-gradient(135deg, #e67e22, #d35400)',
+      title: '品質検証ステップ',
+      desc: 'このステップは、前のステップまでの調査結果全体を第三者の視点で検証するものです。「批判」ではなく「品質保証」が目的です。根拠が不十分な主張はないか、情報に偏りがないか、論理に矛盾がないか、見落としている観点がないかを点検し、調査結果の信頼性を高めるために行っています。ここで指摘された項目は「この部分はさらなる確認が必要」という意味であり、調査内容を否定するものではありません。' };
+  } else if (fname.match(/integration-review/)) {
+    var sn = fname.match(/^(\d+)-/);
+    roleInfo = { badge: 'STEP ' + (sn ? parseInt(sn[1]) : ''), color: 'linear-gradient(135deg, #27ae60, #1e8449)',
+      title: '統合レビューステップ',
+      desc: 'このステップは、全ステップの調査・分析・検証結果を統合し、最終的な結論を導出するものです。情報収集から品質検証までの全知見を踏まえ、テーマに対する包括的な見解をまとめています。品質検証で指摘された問題点も考慮した上で、バランスの取れた結論を提示しています。' };
+  } else if (fname.startsWith('qa-')) {
+    roleInfo = { badge: 'Q&A', color: 'linear-gradient(135deg, #f39c12, #e67e22)',
+      title: '追加の質問応答',
+      desc: 'これは初回調査の完了後に、特定の疑問点について追加で質問した結果です。既存の調査結果を踏まえた上で回答しており、確信度と根拠も付与されています。' };
+  } else if (fname.startsWith('drill-')) {
+    roleInfo = { badge: 'DRILL', color: 'linear-gradient(135deg, #e74c3c, #c0392b)',
+      title: '追加の深掘り調査',
+      desc: 'これは初回調査の完了後に、特定のテーマについて追加で深掘り調査した結果です。初回調査では扱いきれなかった詳細や、新たに浮上した論点を掘り下げています。' };
+  } else if (fname === 'FINAL_REPORT.md') {
+    roleInfo = { badge: 'REPORT', color: 'linear-gradient(135deg, #27ae60, #1e8449)',
+      title: '最終レポート',
+      desc: 'これは全ての調査・追加調査の結果を統合し、読みやすく再構成した最終レポートです。エグゼクティブサマリーから詳細分析、結論・提言までを含む包括的な報告書です。' };
+  }
+
+  badge.textContent = roleInfo.badge;
+  if (roleInfo.color) badge.style.background = roleInfo.color;
+
+  // ベースURLを算出（viewer.htmlと同じディレクトリ）
+  var base = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/');
+  var url = base + file;
+
+  // メタデータとMarkdownを並行取得
+  var mdPromise = fetch(url).then(function(r) {
+    if (!r.ok) throw new Error(r.status + ': ' + file);
+    return r.text();
+  });
+  var planPromise = fetch(base + 'data/.plan.json').then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; });
+  var execPromise = fetch(base + 'data/.execution.json').then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; });
+
+  Promise.all([mdPromise, planPromise, execPromise])
+    .then(function(results) {
+      var md = results[0], plan = results[1], exec = results[2];
+
+      // ステップ番号からメタデータを抽出
+      var stepMatch = fname.match(/^(\d+)-/);
+      var stepNum = stepMatch ? parseInt(stepMatch[1]) : 0;
+      var metaHtml = '';
+
+      if (plan && stepNum > 0) {
+        var stepDef = plan.steps ? plan.steps.find(function(s) { return s.step === stepNum; }) : null;
+        if (stepDef) {
+          metaHtml += '<span class="role-meta-item"><span class="label">AIモデル:</span><span class="value">' + stepDef.model + '</span></span>';
+        }
+      }
+      if (exec) {
+        if (exec.completed_at) {
+          var d = exec.completed_at.replace('T', ' ').replace('Z', ' UTC');
+          var dDisplay = d.replace(/ UTC/, '').replace(/:\d\d$/, '');
+          metaHtml += '<span class="role-meta-item"><span class="label">更新日時:</span><span class="value">' + dDisplay + '</span></span>';
+        }
+        if (exec.steps) {
+          var execStep = exec.steps.find(function(s) { return s.step === stepNum; });
+          if (execStep) {
+            if (execStep.duration_human) {
+              metaHtml += '<span class="role-meta-item"><span class="label">所要時間:</span><span class="value">' + execStep.duration_human + '</span></span>';
+            }
+            if (execStep.output_bytes) {
+              metaHtml += '<span class="role-meta-item"><span class="label">出力サイズ:</span><span class="value">' + Math.round(execStep.output_bytes / 1024) + ' KB</span></span>';
+            }
+          }
+        }
+        if (exec.total_cumulative_seconds && exec.total_cumulative_seconds > 0) {
+          var cm = Math.floor(exec.total_cumulative_seconds / 60);
+          var cs = exec.total_cumulative_seconds % 60;
+          metaHtml += '<span class="role-meta-item"><span class="label">総調査時間:</span><span class="value">' + cm + 'm' + cs + 's</span></span>';
+        } else if (exec.duration_human) {
+          metaHtml += '<span class="role-meta-item"><span class="label">総調査時間:</span><span class="value">' + exec.duration_human + '</span></span>';
+        }
+        if (exec.operations && exec.operations.length > 0) {
+          metaHtml += '<span class="role-meta-item"><span class="label">追加操作:</span><span class="value">' + exec.operations.length + '回</span></span>';
+        }
+        if (exec.version) {
+          metaHtml += '<span class="role-meta-item"><span class="label">バージョン:</span><span class="value">v' + exec.version + '</span></span>';
+        }
+      }
+      // Q&A/drill の場合はモデル名をファイル名から推定
+      if (stepNum === 0 && fname.match(/claude|gemini|gpt/)) {
+        var modelMatch = fname.match(/(claude-[a-z0-9.-]+|gemini-[a-z0-9.-]+|gpt-[a-z0-9.-]+)/);
+        if (modelMatch) {
+          metaHtml += '<span class="role-meta-item"><span class="label">AIモデル:</span><span class="value">' + modelMatch[1] + '</span></span>';
+        }
+      }
+
+      var metaBlock = metaHtml ? '<div class="role-meta">' + metaHtml + '</div>' : '';
+      var bannerHtml = '';
+      if (roleInfo.title) {
+        bannerHtml = '<div class="role-banner"><h3>' + roleInfo.title + '</h3><p>' + roleInfo.desc + '</p>' + metaBlock + '</div>';
+      }
+      document.getElementById('content').innerHTML = bannerHtml + marked.parse(md);
+
+      // テーブルをスクロールラッパーで囲む
+      document.querySelectorAll('.content table').forEach(function(t) {
+        var wrap = document.createElement('div');
+        wrap.className = 'table-wrap';
+        t.parentNode.insertBefore(wrap, t);
+        wrap.appendChild(t);
+      });
+      var h1 = document.querySelector('.content h1');
+      if (h1) {
+        document.getElementById('doc-title').textContent = h1.textContent;
+        document.title = h1.textContent + ' - Document Viewer';
+      }
+    })
+    .catch(function(e) {
+      document.getElementById('content').innerHTML = '<div class="error">読み込みに失敗しました<br><small>' + e.message + '</small><br><br><a href="' + url + '" style="color:#4299e1;">Markdownファイルを直接開く</a></div>';
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>調査の詳細 - テスト工学（学習）：Claude Code時代のAI活用システムテスト技法</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif; background: #f0fdf4; color: #1e293b; line-height: 1.7;  }
+  .hero { background: linear-gradient(135deg, #1a2e1a 0%, #1e3e1e 50%, #0f4f2f 100%); color: #e2e8f0; padding: 60px 40px; text-align: center;   }
+  .hero h1 { font-size: 2.2em; margin-bottom: 12px;  }
+  .hero p { font-size: 1.1em; color: #94a3b8; max-width: 700px; margin: 0 auto; }
+  .hero .meta { margin-top: 20px; font-size: 0.85em; color: #64748b; }
+  .hero .meta span { margin: 0 12px; }
+  .header { background: linear-gradient(135deg, #1a2e1a 0%, #1e3e1e 50%, #0f4f2f 100%); color: #e2e8f0; padding: 24px 40px; display: flex; align-items: center; gap: 20px; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; color: #fff; background: rgba(255,255,255,0.12); text-decoration: none; font-size: 0.85em; font-weight: 600; padding: 6px 16px; border-radius: 8px; transition: background 0.2s; }
+  .back-btn:hover { background: rgba(255,255,255,0.22); }
+  .header h1 { font-size: 1.3em; flex: 1; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 50px 0; }
+  .section-title { font-size: 1.5em; font-weight: 700; color: #0f172a; margin-bottom: 8px;  }
+  .section-subtitle { font-size: 0.95em; color: #64748b; margin-bottom: 30px; }
+  .about-box { background: #ffffff; border-radius: 12px; padding: 30px; margin-bottom: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #10b981;  }
+  .about-box h3 { color: #047857; margin-bottom: 12px; }
+  .about-box ul { padding-left: 20px; color: #475569; }
+  .about-box li { margin-bottom: 6px; }
+  .visual-card { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 30px; }
+  .visual-card img { width: 100%; height: auto; display: block; cursor: pointer; transition: transform 0.2s; }
+  .visual-card img:hover { transform: scale(1.02); }
+  .visual-card .caption { padding: 16px 20px; }
+  .visual-card .caption h3 { font-size: 1.1em; color: #1e293b; }
+  .visual-card .caption p { font-size: 0.9em; color: #64748b; margin-top: 4px; }
+  .visual-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+  .step-card { background: #ffffff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); display: flex; gap: 16px; align-items: flex-start;  }
+  .step-number { background: linear-gradient(135deg, #34d399, #059669); color: #fff; font-weight: 700; font-size: 0.85em; padding: 8px 14px; border-radius: 8px; white-space: nowrap; }
+  .step-role { font-weight: 700; font-size: 1.05em; color: #1e293b; }
+  .step-model { font-size: 0.8em; color: #94a3b8; margin-top: 2px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+  .step-tag { display: inline-block; background: #d1fae5; color: #475569; font-size: 0.85em; padding: 1px 8px; border-radius: 4px; }
+  .step-summary { font-size: 0.9em; color: #475569; margin-top: 8px; }
+  .step-link { display: inline-block; margin-top: 8px; color: #10b981; text-decoration: none; font-size: 0.9em; font-weight: 600; }
+  .step-link:hover { text-decoration: underline; }
+  .slides-frame { width: 100%; height: 500px; border: none; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+  .qa-list { background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+  .qa-list li { margin-bottom: 8px; }
+  .qa-list a { color: #10b981; text-decoration: none; }
+  .qa-list a:hover { text-decoration: underline; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; }
+  .gallery-item { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; }
+  .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+  .gallery-item img { width: 100%; height: auto; display: block; cursor: pointer; }
+  .gallery-caption { padding: 16px 20px; }
+  .gallery-caption h3 { font-size: 1.05em; color: #1e293b; margin-bottom: 4px; }
+  .gallery-caption p { font-size: 0.88em; color: #64748b; }
+  .quality-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; }
+  .quality-item { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .quality-item img { width: 100%; height: auto; display: block; cursor: pointer; }
+  .quality-caption { padding: 16px 20px; }
+  .quality-caption h3 { font-size: 1.05em; color: #1e293b; margin-bottom: 4px; }
+  .quality-caption p { font-size: 0.88em; color: #64748b; }
+  .nav-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
+  .nav-card { display: block; border-radius: 12px; padding: 28px 24px; text-decoration: none; color: #fff; font-weight: 700; font-size: 1.1em; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.2s, box-shadow 0.2s; }
+  .nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+  .nav-card .nav-desc { font-size: 0.8em; font-weight: 400; margin-top: 6px; opacity: 0.9; }
+  .footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 30px; font-size: 0.85em; }
+  .footer a { color: #6ee7b7; text-decoration: none; }
+  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; cursor: pointer; justify-content: center; align-items: center; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; }
+  @media (max-width: 768px) { .hero { padding: 40px 20px; } .hero h1 { font-size: 1.6em; } .visual-grid { grid-template-columns: 1fr; } .nav-grid { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: 1fr; } .quality-grid { grid-template-columns: 1fr; } .header { padding: 16px 20px; } }
+  /* Theme decoration */
+  
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="./index.html" class="back-btn">← トップへ</a>
+  <h1>調査の詳細</h1>
+</div>
+<div class="container">
+  <div class="section">
+    <div class="section-title">調査プロセス</div>
+    <div class="section-subtitle">各AIモデルが順番に調査・分析・検証を行いました</div>
+
+            <div class="step-card">
+              <div class="step-number">Step 1</div>
+              <div class="step-info">
+                <div class="step-role">情報収集</div>
+                <div class="step-model">gemini-3-pro-preview <span class="step-tag">⏱ 4m30s</span><span class="step-tag">22 KB</span></div>
+                <p class="step-summary">テスト工学（学習）：Claude Code時代のAI活用システムテスト技法  本レポートは、フルスタック経験15年程度の上級エンジニア向けに、古典的テスト工学体系をClaude Code等のAIコーディングツール時代に合わせて再整理し、AIを活用したテスト設計の実践的ノウハウを体系化したものである。...</p>
+                <a href="./viewer.html?file=steps/01-information-gathering-gemini-3-pro-preview.md" class="step-link">この分析を読む</a>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-number">Step 2</div>
+              <div class="step-info">
+                <div class="step-role">深層分析</div>
+                <div class="step-model">claude-sonnet-4.6 <span class="step-tag">⏱ 7m20s</span><span class="step-tag">28 KB</span></div>
+                <p class="step-summary">AI活用テスト設計の深層分析 (Deep Analysis: AI-Integrated Test Design)  Findings（主要な発見） ...</p>
+                <a href="./viewer.html?file=steps/02-deep-analysis-claude-sonnet-4.6.md" class="step-link">この分析を読む</a>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-number">Step 3</div>
+              <div class="step-info">
+                <div class="step-role">技術戦略</div>
+                <div class="step-model">gpt-5.3-codex <span class="step-tag">⏱ 6m38s</span><span class="step-tag">11 KB</span></div>
+                <p class="step-summary">外部Web取得が権限制約で使えなかったため、手元の既存調査ログから根拠URLを抽出して、technical-strategy視点で再構成します。  Technical Strategy for AI-Assisted System Testing in Agentic Coding（Agentic ...</p>
+                <a href="./viewer.html?file=steps/03-technical-strategy-gpt-5.3-codex.md" class="step-link">この分析を読む</a>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-number">Step 4</div>
+              <div class="step-info">
+                <div class="step-role">深層分析</div>
+                <div class="step-model">claude-sonnet-4.6 <span class="step-tag">⏱ 5m33s</span><span class="step-tag">30 KB</span></div>
+                <p class="step-summary">学習ロードマップと実践チェックリスト：AI時代のテスト工学体系化（Learning Roadmap & Practical Checklists for AI-Integrated Test Engineering）  Overview（体系化の骨格） ...</p>
+                <a href="./viewer.html?file=steps/04-deep-analysis-claude-sonnet-4.6.md" class="step-link">この分析を読む</a>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-number">Step 5</div>
+              <div class="step-info">
+                <div class="step-role">再検証</div>
+                <div class="step-model">claude-sonnet-4.6 <span class="step-tag">⏱ 5m4s</span><span class="step-tag">25 KB</span></div>
+                <p class="step-summary">Critic Review：AI活用テスト戦略への批判的レビュー  Validation Summary（検証サマリー） ...</p>
+                <a href="./viewer.html?file=steps/05-critic-review-claude-sonnet-4.6.md" class="step-link">この分析を読む</a>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-number">Step 6</div>
+              <div class="step-info">
+                <div class="step-role">統合レビュー</div>
+                <div class="step-model">claude-opus-4.6 <span class="step-tag">⏱ 9m44s</span><span class="step-tag">42 KB</span></div>
+                <p class="step-summary">統合レビュー  Executive Summary（総括） ...</p>
+                <a href="./viewer.html?file=steps/06-integration-review-claude-opus-4.6.md" class="step-link">この分析を読む</a>
+              </div>
+            </div>
+    <div style="margin-top: 30px;">
+      <div class="about-box" style="border-left-color: #667eea;">
+        <h3>使用モデル</h3>
+        <p>claude-opus-4.6, claude-sonnet-4.6, gemini-3-pro-preview, gpt-5.3-codex</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  Generated by <a href="https://github.com/ledboots624/ai-research-agent">AI Research Agent</a> v2.5.0<br>
+  AI生成のため、重要な意思決定には人間による検証を推奨します
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(el) {
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = el.src;
+  lb.classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,565 @@
+{
+  "generated_at": "2026-03-19T09:02:09Z",
+  "generator": "AI Research Agent v2.5.0",
+  "total_sources": 30,
+  "tier_summary": {
+    "tier1": 5,
+    "tier2": 10,
+    "tier3": 12,
+    "tier4": 3
+  },
+  "primary_source_count": 6,
+  "sources": [
+    {
+      "id": "SRC-001",
+      "source_type": "unknown",
+      "title": "3層モデルの設計原則より演繹",
+      "locator": "unknown",
+      "url": null,
+      "access_date": "unknown",
+      "reliability_tier": "tier4",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "4:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "Phase 1の学習において「出力の良し悪し」を判断するためには、Phase 0で再インデックス化した技法知識が判断基準として機能する。技法を知らない状態でのPhase 1は「良いプロンプトとは何か」..."
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "source_type": "academic_paper",
+      "title": "A Systematic Literature Review of Code Hallucinations in LLMs",
+      "locator": "https://arxiv.org/abs/2511.00776",
+      "url": "https://arxiv.org/abs/2511.00776",
+      "access_date": "2025-01",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "境界値分析プロンプトに「Off-by-oneの検証ポイント列」を明示要求することで、AIは境界条件の論理的矛盾（`<` vs `<=`）を自己検証する傾向が強まる。"
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "source_type": "academic_paper",
+      "title": "Adaptive Human-in-the-Loop Testing for LLM-Integrated Applications",
+      "locator": "https://www.researchgate.net/profile/Farinu-Hamzah/publication/391908960_Adaptive_Human-in-the-Loop_Testing_for_LLM-Integrated_Applications/links/682d140a026fee1034f9665f/Adaptive-Human-in-the-Loop-Testing-for-LLM-Integrated-Applications.pdf",
+      "url": "https://www.researchgate.net/profile/Farinu-Hamzah/publication/391908960_Adaptive_Human-in-the-Loop_Testing_for_LLM-Integrated_Applications/links/682d140a026fee1034f9665f/Adaptive-Human-in-the-Loop-Testing-for-LLM-Integrated-Applications.pdf",
+      "access_date": "2025",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "探索的テスト、非機能品質（ユーザビリティ・倫理的配慮）、ビジネスリスクの重み付けは、現在のLLMには代替不可能な人間必須領域であり、この領域にAIを使用することは品質保証の空洞化をもたらす。"
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "source_type": "official_document",
+      "title": "Anthropic Claude Usage Policy — Model Behavior",
+      "locator": "https://www.anthropic.com/legal/usage-policy",
+      "url": "https://www.anthropic.com/legal/usage-policy",
+      "access_date": "2024",
+      "reliability_tier": "tier1",
+      "primary_source": true,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "CLAUDE.mdへのMUST/MUST_NOT記述はLLMへの「確率的指示」であり、決定論的な強制ではない。LLMはmarkdownルールを確率的にしか遵守せず、ユーザーが矛盾する指示を出せば無視さ..."
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "source_type": "official_document",
+      "title": "Best Practices for Claude Code",
+      "locator": "https://code.claude.com/docs/en/best-practices",
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "access_date": "unknown",
+      "reliability_tier": "tier1",
+      "primary_source": true,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "1:information-gathering:gemini-3-pro-preview"
+      ],
+      "claim_summaries": [
+        "`CLAUDE.md` にテスト戦略（TDDの強制、禁止事項）を明記することで、AIエージェントの自律的なコーディング品質を著しく安定化できる。"
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "source_type": "academic_paper",
+      "title": "Beyond Blind Spots: Analytic Hints for Mitigating LLM-Based Evaluation Pitfalls",
+      "locator": "https://arxiv.org/html/2512.16272",
+      "url": "https://arxiv.org/html/2512.16272",
+      "access_date": "2024-12",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "AIに「自分が検出できない欠陥」を明示させることは、テスト設計者に補完すべき領域を告知する実践的な手法であり、AIの自己認識能力を逆用したリスク管理アプローチである。"
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "source_type": "industry_report",
+      "title": "Boundary Analysis and LLM-Assisted Testing - Software Engineering Fundamentals",
+      "locator": "https://l3gj0n.github.io/software-engineering_hs_aalen/en/2025/11/13/lecture-5-testing-fundamentals-part-2/",
+      "url": "https://l3gj0n.github.io/software-engineering_hs_aalen/en/2025/11/13/lecture-5-testing-fundamentals-part-2/",
+      "access_date": "2025",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "状態遷移テストにおいて「Mermaid記法での図の生成」→「図の承認」→「テストケースへの変換」という3ステップフローは、状態爆発を制御しつつ可視化の恩恵を受けられる実践的手法である。"
+      ]
+    },
+    {
+      "id": "SRC-008",
+      "source_type": "industry_report",
+      "title": "Claude Code Best Practices: Planning, Context Transfer, TDD",
+      "locator": "https://www.datacamp.com/tutorial/claude-code-best-practices",
+      "url": "https://www.datacamp.com/tutorial/claude-code-best-practices",
+      "access_date": "2024",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 3,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6",
+        "4:deep-analysis:claude-sonnet-4.6",
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "AI活用テスト設計スキルは3層の順序依存構造を持つ。Layer 1（テスト論理基盤：古典技法の概念・論理）→Layer 2（AI活用プロトコル：プロンプト設計パターン・TDD強制・セルフレビュー）→L...",
+        "Layer 1の習熟なしにLayer 2は機能せず、Layer 2の整備なしにLayer 3は空洞化する。3層の順序依存性を無視した「ツール先行導入」がAI活用の最大の失敗パターンである。",
+        "プロンプトの質がテスト設計の品質を直接決定するため、「プロンプトのレビュー」は「テストケースのレビュー」と同等またはそれ以上に重要である。"
+      ]
+    },
+    {
+      "id": "SRC-009",
+      "source_type": "industry_report",
+      "title": "Claude Code TDD: AI-Assisted Test-Driven Dev Guide",
+      "locator": "https://claude-world.com/articles/claude-code-tdd-workflow/",
+      "url": "https://claude-world.com/articles/claude-code-tdd-workflow/",
+      "access_date": "2024",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "同一のLLMセッションでプロダクションコードとテストコードを生成すると、テストがコードの実装ロジックを反復する「Mirror-Image」現象が発生し、欠陥検出率が構造的に低下する。これはLLMのコン..."
+      ]
+    },
+    {
+      "id": "SRC-010",
+      "source_type": "industry_report",
+      "title": "Claude Code test generation - the 80% coverage sweet spot",
+      "locator": "https://amitkoth.com/claude-code-test-generation/",
+      "url": "https://amitkoth.com/claude-code-test-generation/",
+      "access_date": "2024",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "AI活用でコードカバレッジ80%が「簡単に」達成できるようになった現在、「カバレッジ数値の高さ」が「テスト品質の高さ」を意味しないという問題が深刻化している。AIは「実行行数を増やすテスト」は書けるが..."
+      ]
+    },
+    {
+      "id": "SRC-011",
+      "source_type": "academic_paper",
+      "title": "CodeAssert: Multi-Provider LLM Evaluation for Automated Unit Test Generation",
+      "locator": "https://recipp.ipp.pt/bitstreams/8ae46aca-ac55-44f8-a98f-6dd4c508463f/download",
+      "url": "https://recipp.ipp.pt/bitstreams/8ae46aca-ac55-44f8-a98f-6dd4c508463f/download",
+      "access_date": "2024",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "Claude CodeなどのAIがコードとテストの両方を生成した場合、テストが全てパスしても実装が仕様を満たしていない「フォールスポジティブ」が発生しうる。これはAIが同一のバイアスを持ってコードとテ..."
+      ]
+    },
+    {
+      "id": "SRC-012",
+      "source_type": "academic_paper",
+      "title": "Equivalence Partitioning & Boundary Value Analysis in Software Testing",
+      "locator": "https://www.commencis.com/thoughts/unleashing-the-power-of-equivalence-partitioning-and-boundary-value-analysis-in-software-testing/",
+      "url": "https://www.commencis.com/thoughts/unleashing-the-power-of-equivalence-partitioning-and-boundary-value-analysis-in-software-testing/",
+      "access_date": "unknown",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "1:information-gathering:gemini-3-pro-preview"
+      ],
+      "claim_summaries": [
+        "伝統的技法は「テストケース作成の手法」から「AIの推論をガイドし、生成物を監査するための論理フレームワーク」へと役割を変えている。"
+      ]
+    },
+    {
+      "id": "SRC-013",
+      "source_type": "official_document",
+      "title": "IEC 62304: Medical Device Software — Software Life Cycle Processes",
+      "locator": "https://www.iso.org/standard/38421.html",
+      "url": "https://www.iso.org/standard/38421.html",
+      "access_date": "2015",
+      "reliability_tier": "tier1",
+      "primary_source": true,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "本調査は一般的な業務システム開発を暗黙の前提としており、医療機器（IEC 62304）・自動車（ISO 26262 / ASPICE）・航空宇宙（DO-178C）・金融（EU DORA）等の規制産業で..."
+      ]
+    },
+    {
+      "id": "SRC-014",
+      "source_type": "academic_paper",
+      "title": "LLM4TDD: Best Practices for Test Driven Development Using Large Language Models",
+      "locator": "https://scopelabuta.github.io/files/LLM4CODE.pdf",
+      "url": "https://scopelabuta.github.io/files/LLM4CODE.pdf",
+      "access_date": "unknown",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "1:information-gathering:gemini-3-pro-preview"
+      ],
+      "claim_summaries": [
+        "AI時代のテスト設計において、同値分割・境界値分析は「人間がテストケースを書くための技法」から「AIに正確なテストコードを書かせるための指示言語」へと役割を変えている。"
+      ]
+    },
+    {
+      "id": "SRC-015",
+      "source_type": "industry_report",
+      "title": "Mastering LLM-Generated Tests with Claude Code: From Flaky to Rock Solid",
+      "locator": "https://apimagic.ai/blog/claude/mastering-llm-generated-tests",
+      "url": "https://apimagic.ai/blog/claude/mastering-llm-generated-tests",
+      "access_date": "2024",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "AIが同一コンテキストでテストケースとプロダクトコードの両方を生成した場合、テストが実装の鏡像（Mirror-Image）となり、実装の誤りを再現するだけで欠陥を検出できないという構造的問題が発生する..."
+      ]
+    },
+    {
+      "id": "SRC-016",
+      "source_type": "official_document",
+      "title": "NIST SP 800-218 Secure Software Development Framework (SSDF)",
+      "locator": "https://csrc.nist.gov/pubs/sp/800/218/final",
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+      "access_date": "2024",
+      "reliability_tier": "tier1",
+      "primary_source": true,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "AI活用テスト設計において、CI/CDゲートはCLAUDE.mdの確率的ルール遵守を補完する「客観的品質保証の最後の砦」として機能する。推奨ゲート構成として、失敗テスト0件・契約テスト全緑・依存パッケ..."
+      ]
+    },
+    {
+      "id": "SRC-017",
+      "source_type": "official_document",
+      "title": "OWASP Web Security Testing Guide v4.2",
+      "locator": "https://owasp.org/www-project-web-security-testing-guide/",
+      "url": "https://owasp.org/www-project-web-security-testing-guide/",
+      "access_date": "2020",
+      "reliability_tier": "tier1",
+      "primary_source": true,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "「セキュリティテスト = AI生成禁止」は過度に粗い分類であり、セキュリティテスト技法ごとにAI活用の可否を細分化すべきである。脅威モデリング・ペネトレーションテスト設計はMUST_NOT（AI単独）..."
+      ]
+    },
+    {
+      "id": "SRC-018",
+      "source_type": "academic_paper",
+      "title": "Prompt Driven Test Generation: Leveraging Large Language Models",
+      "locator": "https://link.springer.com/chapter/10.1007/978-3-032-08649-5_17",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-032-08649-5_17",
+      "access_date": "2024",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "LLMは非構造化仕様テキストから同値クラスと境界条件を自動抽出する能力を持ち、経験のない観点（セキュリティ、国際化、同時実行）を網羅的に列挙する点で人間を補完する。"
+      ]
+    },
+    {
+      "id": "SRC-019",
+      "source_type": "academic_paper",
+      "title": "Prompt Injection Attacks and Defenses in LLM-Integrated Applications",
+      "locator": "https://arxiv.org/abs/2310.12815",
+      "url": "https://arxiv.org/abs/2310.12815",
+      "access_date": "2023",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "AIをテスト生成に使用する際、悪意のある仕様書・コードコメント・依存ライブラリ内のテキストによってテスト生成プロンプトが汚染される（prompt injection）リスクが存在する。特にオープンソー..."
+      ]
+    },
+    {
+      "id": "SRC-020",
+      "source_type": "industry_report",
+      "title": "Testing AI-Generated Code: New Risks QA Teams Can't Ignore",
+      "locator": "https://www.stickyminds.com/article/testing-ai-generated-code-new-risks-qa-teams-can-t-ignore",
+      "url": "https://www.stickyminds.com/article/testing-ai-generated-code-new-risks-qa-teams-can-t-ignore",
+      "access_date": "2024",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "「敵対的視点」をAIに明示的に付与することで、通常の観点出しでは発見できないセキュリティ・エッジケースを効率的に抽出できる。"
+      ]
+    },
+    {
+      "id": "SRC-021",
+      "source_type": "academic_paper",
+      "title": "The Prompt Alchemist: Automated LLM-Tailored Prompt Optimization for Test Case Generation",
+      "locator": "https://arxiv.org/abs/2405.01359",
+      "url": "https://arxiv.org/abs/2405.01359",
+      "access_date": "2024",
+      "reliability_tier": "tier2",
+      "primary_source": true,
+      "community_score": null,
+      "reference_count": 2,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "AI時代において、同値分割・境界値分析等の古典的テスト設計技法は、テストケースを手で書くための手順書から、AIへの高精度な指示を構造化するための論理言語へと役割が転換した。技法名を明示したプロンプトは...",
+        "AI活用テスト設計のプロンプトは4つのアーキタイプ（仕様分解型・観点生成型・ケース展開型・コード生成型）に分類でき、各アーキタイプが古典技法の異なる側面を「AIへの翻訳」する"
+      ]
+    },
+    {
+      "id": "SRC-022",
+      "source_type": "industry_report",
+      "title": "The Prompt Alchemist: Automated LLM-Tailored Prompt Optimization for Test Case Generation",
+      "locator": "https://www.marktechpost.com/2025/01/08/the-prompt-alchemist-automated-llm-tailored-prompt-optimization-for-test-case-generation/",
+      "url": "https://www.marktechpost.com/2025/01/08/the-prompt-alchemist-automated-llm-tailored-prompt-optimization-for-test-case-generation/",
+      "access_date": "2025-01",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 2,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6",
+        "4:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "AIプロンプトに「技法名の明示」「Infeasible判定の要求」「リスク起点の付記」の3条件を含めると、単純指示と比較してテスト観点の質と網羅性が向上する。",
+        "AI時代において、古典的テスト設計技法は「テストケースを書くための手順書」から「AIへの精度の高い指示を構造化するための論理言語」へと役割が転換した。技法の習熟度がプロンプト品質を直接規定する。"
+      ]
+    },
+    {
+      "id": "SRC-023",
+      "source_type": "industry_report",
+      "title": "The Test Pyramid 2.0: AI-assisted testing across the pyramid",
+      "locator": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1695965/full",
+      "url": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1695965/full",
+      "access_date": "2025-01",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 3,
+      "referenced_by": [
+        "1:information-gathering:gemini-3-pro-preview",
+        "4:deep-analysis:claude-sonnet-4.6",
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "AI支援開発では「Unit量産は容易だが統合面で欠陥が集中する」非対称性が生じるため、従来のピラミッド型（Unit 70%/Integration 20%/E2E 10%）からDiamond寄り（Un...",
+        "AI支援開発では「Unit量産は容易・統合面で欠陥集中」という非対称性が生まれるため、推奨比率は従来のピラミッド（Unit 70%/Integration 20%/E2E 10%）からダイヤモンド寄り...",
+        "AI生成コードは単体レベルでは正しい（コンパイルが通る）ことが多いが、結合時に文脈の不一致で失敗する傾向があるため、統合テストの比重を高めるべきである。"
+      ]
+    },
+    {
+      "id": "SRC-024",
+      "source_type": "industry_report",
+      "title": "The complete guide for TDD with LLMs",
+      "locator": "https://langwatch.ai/blog/tdd-with-llms",
+      "url": "https://langwatch.ai/blog/tdd-with-llms",
+      "access_date": "unknown",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "1:information-gathering:gemini-3-pro-preview"
+      ],
+      "claim_summaries": [
+        "テストコードをAIとの「契約書」として機能させることで、要件の誤解釈を早期に発見できる。"
+      ]
+    },
+    {
+      "id": "SRC-025",
+      "source_type": "industry_report",
+      "title": "These Human Capabilities Complement AI's Shortcomings",
+      "locator": "https://mitsloan.mit.edu/ideas-made-to-matter/these-human-capabilities-complement-ais-shortcomings",
+      "url": "https://mitsloan.mit.edu/ideas-made-to-matter/these-human-capabilities-complement-ais-shortcomings",
+      "access_date": "2024",
+      "reliability_tier": "tier2",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "テスト工学の中で最もAI代替が進む領域は「テンプレート化可能な生成作業（境界値列挙・コード生成）」であり、最も代替困難な領域は「文脈と意味の理解を要する判断作業（Infeasible判定・ビジネスリス..."
+      ]
+    },
+    {
+      "id": "SRC-026",
+      "source_type": "unknown",
+      "title": "一般的なテスト保守コスト研究からの類推",
+      "locator": "not_stated",
+      "url": null,
+      "access_date": "unknown",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "AI生成テストは生成コストが低い一方、保守コスト（仕様変更時の追従・偽陽性対応・テスト意図の理解）が未定量化である。テストコード量の増大が保守負荷の増大を招き、長期的にはネットのROIが負になるシナリ..."
+      ]
+    },
+    {
+      "id": "SRC-027",
+      "source_type": "unknown",
+      "title": "本調査の分析統合による帰納的結論",
+      "locator": "unknown",
+      "url": null,
+      "access_date": "unknown",
+      "reliability_tier": "tier4",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "4:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "AI時代のテスト工学学習は「AIツールの使い方を覚える」ではなく「古典的テスト技法をAIへの論理言語として再習得する」ことが本質であり、この再解釈を経た上級エンジニアが組織全体のAI活用テスト品質を牽..."
+      ]
+    },
+    {
+      "id": "SRC-028",
+      "source_type": "unknown",
+      "title": "本調査分析統合（SRC-001, SRC-004, SRC-005の帰納的統合）",
+      "locator": "not_stated",
+      "url": null,
+      "access_date": "unknown",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "古典的テスト設計技法のうち、AI活用により「強化される側面」と「代替不可能な側面」は明確に分離できる。AI代替率の推定値は技法によって異なり、探索的テスト10-20%から境界値分析70-80%の範囲に..."
+      ]
+    },
+    {
+      "id": "SRC-029",
+      "source_type": "unknown",
+      "title": "本調査統合レビュー（Executive Summary）",
+      "locator": "not_stated",
+      "url": null,
+      "access_date": "unknown",
+      "reliability_tier": "tier3",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "6:integration-review:claude-opus-4.6"
+      ],
+      "claim_summaries": [
+        "古典的テスト設計技法はAI時代においても代替不可能な「論理基盤」であり、その習熟度がAI活用テスト設計の品質上限を規定する"
+      ]
+    },
+    {
+      "id": "SRC-030",
+      "source_type": "unknown",
+      "title": "複数の実務事例からの帰納（推測含む）",
+      "locator": "unknown",
+      "url": null,
+      "access_date": "unknown",
+      "reliability_tier": "tier4",
+      "primary_source": false,
+      "community_score": null,
+      "reference_count": 1,
+      "referenced_by": [
+        "2:deep-analysis:claude-sonnet-4.6"
+      ],
+      "claim_summaries": [
+        "AIにデシジョンテーブルを生成させる最大の価値は「テストケースの生成」ではなく、仕様書の「矛盾・空白・Don't Care過剰」の発見にある。"
+      ]
+    }
+  ]
+}

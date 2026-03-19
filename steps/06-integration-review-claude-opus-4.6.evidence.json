@@ -1,0 +1,276 @@
+{
+  "step": 6,
+  "role": "integration-review",
+  "model": "claude-opus-4.6",
+  "extracted_at": "2026-03-19T08:33:59Z",
+  "claims": [
+    {
+      "claim": "古典的テスト設計技法はAI時代においても代替不可能な「論理基盤」であり、その習熟度がAI活用テスト設計の品質上限を規定する",
+      "evidence": "複数の証拠系統（Finding 1〜12）から支持されるとされるが、定量的根拠は限定的。本統合レビューの中心命題として複数ソースの帰納的統合により導出されている",
+      "source": {
+        "source_type": "unknown",
+        "source_title": "本調査統合レビュー（Executive Summary）",
+        "source_locator": "not_stated",
+        "access_date": "unknown",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "AI時代において、同値分割・境界値分析等の古典的テスト設計技法は、テストケースを手で書くための手順書から、AIへの高精度な指示を構造化するための論理言語へと役割が転換した。技法名を明示したプロンプトは、曖昧な自然言語指示と比較してテストケースの網羅性・構造性が向上する。ただし、その向上度の定量的根拠は現時点では限定的である",
+      "evidence": "The Prompt Alchemist論文（2024）はLLM向けプロンプト最適化がテストケース生成品質に影響を与えることを示唆している。「技法名明示 vs 非明示」の直接比較実験データは原論文レベルで未確認であり、定量的裏付けは不十分。技法の構造（有効/無効クラス、On/Off点、条件組み合わせ表）をプロンプトに含めることで出力の構造化が促進されるという経験的知見が複数のtier3ソースで報告されている",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "The Prompt Alchemist: Automated LLM-Tailored Prompt Optimization for Test Case Generation",
+        "source_locator": "https://arxiv.org/abs/2405.01359",
+        "access_date": "2024",
+        "reliability_tier": "tier2",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": [
+        {
+          "standard": "IEEE 29119-4",
+          "section": "§7",
+          "mapping": "partial"
+        }
+      ]
+    },
+    {
+      "claim": "AI活用テスト設計スキルは3層の順序依存構造を持つ。Layer 1（テスト論理基盤：古典技法の概念・論理）→Layer 2（AI活用プロトコル：プロンプト設計パターン・TDD強制・セルフレビュー）→Layer 3（組織統制：プロンプトライブラリ管理・CI/CDゲート・KPI設計）。Layer 1の習熟なしにLayer 2は機能せず、ツール先行導入（Layer 3からの着手）が最大の失敗パターンとなる",
+      "evidence": "deep-analysisにおけるMirror-Image問題・浅いアサーション・楽観的バイアスの分析から、AI生成テストの品質問題がプロンプト設計の構造的欠陥に起因し、その根本が技法知識の不足であることが帰納的に導かれた。ただし、この3層モデル自体は本調査の構成物であり、外部の実証研究による検証はない",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Claude Code Best Practices: Planning, Context Transfer, TDD",
+        "source_locator": "https://www.datacamp.com/tutorial/claude-code-best-practices",
+        "access_date": "2024",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "同一のLLMセッションでプロダクションコードとテストコードを生成すると、テストがコードの実装ロジックを反復する「Mirror-Image」現象が発生し、欠陥検出率が構造的に低下する。これはLLMのコンテキスト内自己一貫性バイアスに起因する。防御策として、仕様ベース生成（コード非参照）・TDD強制（Red確認必須）・セッション分離が有効とされるが、その防御効果の定量的実証は限定的である",
+      "evidence": "Mirror-Image問題の存在は複数のtier3ソースおよび実務報告で確認されている。仕様ベース生成による防御は理論的に妥当だが、根拠ソースはclaude-world.com（tier3、Claude推奨サイト）1件であり、潜在的vendor biasがある。Critic Reviewによりconfidenceはhighからmediumに降格（tier3単一ソース＋vendor biasの存在）",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Claude Code TDD: AI-Assisted Test-Driven Dev Guide",
+        "source_locator": "https://claude-world.com/articles/claude-code-tdd-workflow/",
+        "access_date": "2024",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "MUST_NOT",
+      "standard_references": []
+    },
+    {
+      "claim": "AI支援開発では「Unit量産は容易だが統合面で欠陥が集中する」非対称性が生じるため、従来のピラミッド型（Unit 70%/Integration 20%/E2E 10%）からDiamond寄り（Unit 35-45%/Integration 40-50%/E2E 10-20%）へのシフトが有効である可能性がある",
+      "evidence": "AI生成コードが単体では成立するが結合時に不整合を顕在化させやすいという報告は複数のtier3ソースに存在する。Mirror-Image問題がUnit層で欠陥を見逃す構造的バイアスを生むことは理論的に妥当。ただし定量的比較データなし。信頼度漂流（confidence drift）を修正し、confidence: lowに戻している。比率は本調査独自の推測であり、実証データに基づかない",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "The Test Pyramid 2.0: AI-assisted testing across the pyramid",
+        "source_locator": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1695965/full",
+        "access_date": "2025",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "low",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "CLAUDE.mdへのMUST/MUST_NOT記述はLLMへの「確率的指示」であり、決定論的な強制ではない。LLMはmarkdownルールを確率的にしか遵守せず、ユーザーが矛盾する指示を出せば無視される。したがって、CLAUDE.mdはテスト品質の「唯一のゲート」にはなり得ず、CI/CDによる客観的検証ゲートとの併用が必須である",
+      "evidence": "Anthropic公式Usage Policyは、LLMが絶対的ルール遵守を保証しない旨を認識している。LLMのinstruction following限界に関する学術研究が存在する。実務的に、Claude CodeはCLAUDE.mdを高確率で参照するが、遵守率100%の保証はアーキテクチャ上不可能",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "Anthropic Claude Usage Policy — Model Behavior",
+        "source_locator": "https://www.anthropic.com/legal/usage-policy",
+        "access_date": "2024",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": "MUST",
+      "standard_references": []
+    },
+    {
+      "claim": "AI活用テスト設計において、CI/CDゲートはCLAUDE.mdの確率的ルール遵守を補完する「客観的品質保証の最後の砦」として機能する。推奨ゲート構成として、失敗テスト0件・契約テスト全緑・依存パッケージ実在確認はMUST、変異テストスコア≥60%（組織推奨値）・AI生成テストのレビュー承認はSHOULD（高リスクはMUST）、セキュリティテストは技法別に細分化する",
+      "evidence": "NIST SP 800-218（SSDF）がテスト実施を要求し（PW.7）、SLSA v1.0がビルド・テストの再現性を要求する。SSDF PW.7はCI/CDパイプライン経由の実行を明示しないためmappingはpartial。変異テスト閾値60%は組織推奨値であり業界統計的根拠はない（weakレベル）。NIST SP 800-204C（DevSecOps）を追加参照しCI/CD固有の根拠を補完",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "NIST SP 800-218 Secure Software Development Framework (SSDF)",
+        "source_locator": "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "access_date": "2024",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": "MUST",
+      "standard_references": [
+        {
+          "standard": "NIST SP 800-218 SSDF",
+          "section": "PW.7",
+          "mapping": "partial"
+        },
+        {
+          "standard": "NIST SP 800-204C",
+          "section": "not_stated",
+          "mapping": "partial"
+        },
+        {
+          "standard": "SLSA v1.0",
+          "section": "Build Track L2",
+          "mapping": "direct"
+        },
+        {
+          "standard": "OWASP ASVS v4.0",
+          "section": "not_stated",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "claim": "「セキュリティテスト = AI生成禁止」は過度に粗い分類であり、セキュリティテスト技法ごとにAI活用の可否を細分化すべきである。脅威モデリング・ペネトレーションテスト設計はMUST_NOT（AI単独）、SAST統合・ファジング補助・DAST設定支援はMAY、認証・認可ロジックテストはSHOULD（人手レビュー主体）",
+      "evidence": "OWASP Testing Guide v4.2がセキュリティテスト技法を分類しており、各技法の性質（判断主体が人間か自動化可能か）に基づいてAI活用の適否を判定できる。境界定義自体は本調査の構成物",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "OWASP Web Security Testing Guide v4.2",
+        "source_locator": "https://owasp.org/www-project-web-security-testing-guide/",
+        "access_date": "2020",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "MUST_NOT",
+      "standard_references": [
+        {
+          "standard": "OWASP Web Security Testing Guide v4.2",
+          "section": "not_stated",
+          "mapping": "partial"
+        }
+      ]
+    },
+    {
+      "claim": "AI活用テスト設計のプロンプトは4つのアーキタイプ（仕様分解型・観点生成型・ケース展開型・コード生成型）に分類でき、各アーキタイプが古典技法の異なる側面を「AIへの翻訳」する",
+      "evidence": "各アーキタイプは複数のtier3実務報告に基づく分類。仕様分解型プロンプトで[暗黙補完]タグを要求する手法は、仕様品質の可視化に有効であるとの実務知見が報告されている。分類体系自体は本調査の構成物であり、個別パターンの有効性はtier3レベルで報告あり",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "The Prompt Alchemist: Automated LLM-Tailored Prompt Optimization for Test Case Generation",
+        "source_locator": "https://arxiv.org/abs/2405.01359",
+        "access_date": "2024",
+        "reliability_tier": "tier2",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "古典的テスト設計技法のうち、AI活用により「強化される側面」と「代替不可能な側面」は明確に分離できる。AI代替率の推定値は技法によって異なり、探索的テスト10-20%から境界値分析70-80%の範囲に分布する",
+      "evidence": "各代替率は実務報告・tier3ソースからの帰納的推定。定量的実証研究に基づかない。組織・ドメイン・モデルにより大幅に変動しうる。本調査独自の推定値であり、参考値としてのみ使用し組織固有の検証を推奨する",
+      "source": {
+        "source_type": "unknown",
+        "source_title": "本調査分析統合（SRC-001, SRC-004, SRC-005の帰納的統合）",
+        "source_locator": "not_stated",
+        "access_date": "unknown",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "low",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "AIをテスト生成に使用する際、悪意のある仕様書・コードコメント・依存ライブラリ内のテキストによってテスト生成プロンプトが汚染される（prompt injection）リスクが存在する。特にオープンソースコードやサードパーティ仕様書を入力とする場合、攻撃者がテストを無効化・弱体化するコメントを埋め込める可能性がある",
+      "evidence": "Prompt Injection攻撃の学術的研究が2023年以降複数公開されており、LLM統合アプリケーションにおけるこの脅威は確立されている。テスト生成固有の攻撃シナリオ研究は限定的だが、リスクの存在は論理的に自明",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "Prompt Injection Attacks and Defenses in LLM-Integrated Applications",
+        "source_locator": "https://arxiv.org/abs/2310.12815",
+        "access_date": "2023",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": "SHOULD",
+      "standard_references": [
+        {
+          "standard": "SLSA v1.0",
+          "section": "サプライチェーン脅威モデル",
+          "mapping": "partial"
+        }
+      ]
+    },
+    {
+      "claim": "本調査は一般的な業務システム開発を暗黙の前提としており、医療機器（IEC 62304）・自動車（ISO 26262 / ASPICE）・航空宇宙（DO-178C）・金融（EU DORA）等の規制産業では、AI生成テストケースが認証エビデンスとして認められない可能性が高い。これらの産業への適用には当該規制との整合確認が必須であり、本資料をそのまま適用することは危険である",
+      "evidence": "IEC 62304はソフトウェアライフサイクルプロセスの文書化と追跡可能性を要求し、AI生成物の非決定論的性質と緊張関係にある。DO-178CはModified Condition/Decision Coverage（MC/DC）を要求し、テストケースの根拠の明示的説明が必要。EU AI Act（Regulation 2024/1689）は高リスクAIシステムに対するリスク管理システムの確立を義務付けている",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "IEC 62304: Medical Device Software — Software Life Cycle Processes",
+        "source_locator": "https://www.iso.org/standard/38421.html",
+        "access_date": "2015",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": "MUST",
+      "standard_references": [
+        {
+          "standard": "IEC 62304",
+          "section": "not_stated",
+          "mapping": "direct"
+        },
+        {
+          "standard": "DO-178C",
+          "section": "not_stated",
+          "mapping": "direct"
+        },
+        {
+          "standard": "EU AI Act Regulation (EU) 2024/1689",
+          "section": "not_stated",
+          "mapping": "direct"
+        },
+        {
+          "standard": "ISO 26262",
+          "section": "not_stated",
+          "mapping": "gap"
+        }
+      ]
+    },
+    {
+      "claim": "AI生成テストは生成コストが低い一方、保守コスト（仕様変更時の追従・偽陽性対応・テスト意図の理解）が未定量化である。テストコード量の増大が保守負荷の増大を招き、長期的にはネットのROIが負になるシナリオを排除できない",
+      "evidence": "本調査内で保守コストに関する定量データは収集されていない。テスト保守コストに関する一般的研究（非AI文脈）は存在するが、AI生成テスト固有の保守特性に関する研究は限定的。リスクの存在は論理的に妥当だが定量的根拠なし",
+      "source": {
+        "source_type": "unknown",
+        "source_title": "一般的なテスト保守コスト研究からの類推",
+        "source_locator": "not_stated",
+        "access_date": "unknown",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "low",
+      "requirement_level": null,
+      "standard_references": []
+    }
+  ]
+}

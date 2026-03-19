@@ -1,0 +1,88 @@
+{
+  "step": 4,
+  "role": "deep-analysis",
+  "model": "claude-sonnet-4.6",
+  "extracted_at": "2026-03-19T08:21:47Z",
+  "claims": [
+    {
+      "claim": "AI時代において、古典的テスト設計技法は「テストケースを書くための手順書」から「AIへの精度の高い指示を構造化するための論理言語」へと役割が転換した。技法の習熟度がプロンプト品質を直接規定する。",
+      "evidence": "技法名を明示したプロンプト（「同値分割を適用して有効・無効クラスを表形式で出力せよ」）は単純指示に比べて生成物の網羅性と精度が向上し、さらに「リスク起点の付記要求」がAIの推論品質を高めることが示されている。技法を知らないエンジニアはAIを「テストケース生成機」として浅く使うにとどまり、技法を深く理解したエンジニアは「仕様の矛盾検出器」「リスク分析支援ツール」として戦略的に活用できる。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "The Prompt Alchemist: Automated LLM-Tailored Prompt Optimization for Test Case Generation",
+        "source_locator": "https://www.marktechpost.com/2025/01/08/the-prompt-alchemist-automated-llm-tailored-prompt-optimization-for-test-case-generation/",
+        "access_date": "2025-01",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "Layer 1の習熟なしにLayer 2は機能せず、Layer 2の整備なしにLayer 3は空洞化する。3層の順序依存性を無視した「ツール先行導入」がAI活用の最大の失敗パターンである。",
+      "evidence": "AI生成テストの品質問題（Mirror-Image・浅いアサーション・楽観的バイアス）はいずれも「プロンプト設計の構造的欠陥」に起因し、その根本は「技法知識の不足によるプロンプトの曖昧さ」として分類された。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Claude Code Best Practices: Planning, Context Transfer, TDD",
+        "source_locator": "https://www.datacamp.com/tutorial/claude-code-best-practices",
+        "access_date": "2024",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "Phase 1の学習において「出力の良し悪し」を判断するためには、Phase 0で再インデックス化した技法知識が判断基準として機能する。技法を知らない状態でのPhase 1は「良いプロンプトとは何か」の基準が形成されないため効果が薄い。",
+      "evidence": "3層モデルの設計原則より演繹（推測含む）。Layer 1の習熟がLayer 2の機能に必要という設計原則からの帰結として導かれており、直接的な実証データは示されていない。",
+      "source": {
+        "source_type": "unknown",
+        "source_title": "3層モデルの設計原則より演繹",
+        "source_locator": "unknown",
+        "access_date": "unknown",
+        "reliability_tier": "tier4",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "low",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "AI支援開発では「Unit量産は容易・統合面で欠陥集中」という非対称性が生まれるため、推奨比率は従来のピラミッド（Unit 70%/Integration 20%/E2E 10%）からダイヤモンド寄り（Unit 40%/Integration 45%/E2E 15%）へシフトする。",
+      "evidence": "AI生成コードは単体で成立しても結合時に不整合が顕在化しやすく（依存関係の複雑化・暗黙状態の見落とし）、Mirror-Image問題がUnit層で欠陥を見逃す構造的バイアスを生む。Integration層への投資がROIが最も高い。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "The Test Pyramid 2.0: AI-assisted testing across the pyramid",
+        "source_locator": "https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1695965/full",
+        "access_date": "2025",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "AI時代のテスト工学学習は「AIツールの使い方を覚える」ではなく「古典的テスト技法をAIへの論理言語として再習得する」ことが本質であり、この再解釈を経た上級エンジニアが組織全体のAI活用テスト品質を牽引する。",
+      "evidence": "本分析の全セクションを通じた一貫した知見として、AI活用テスト設計における品質問題（Mirror-Image・楽観的バイアス・浅いアサーション・仕様矛盾の看過）は、いずれも「技法知識の不足によるプロンプトの曖昧さ」または「技法に基づくAI生成物レビューの欠如」に帰着する。AIはテスト設計技法を「使う道具」であり、技法そのものを代替しない。",
+      "source": {
+        "source_type": "unknown",
+        "source_title": "本調査の分析統合による帰納的結論",
+        "source_locator": "unknown",
+        "access_date": "unknown",
+        "reliability_tier": "tier4",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    }
+  ]
+}

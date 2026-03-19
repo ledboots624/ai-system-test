@@ -1,0 +1,114 @@
+<mxGraphModel dx="50" dy="50" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    
+    <!-- Title -->
+    <mxCell id="title" value="テスト工学比較マトリクス：古典的技法 vs AI活用(Claude Code)時代" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E1D5E7;strokeColor=#9673A6;fontColor=#333333;fontStyle=1;fontSize=20;align=center;spacing=10;shadow=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="40" width="1000" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- Headers -->
+    <mxCell id="h1" value="テスト技法" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#104E8B;strokeColor=#001DBC;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="60" y="120" width="160" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="h2" value="古典的定義" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#104E8B;strokeColor=#001DBC;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="220" y="120" width="200" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="h3" value="AI時代の再定義" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#104E8B;strokeColor=#001DBC;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="420" y="120" width="200" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="h4" value="具体的なAI活用法" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#104E8B;strokeColor=#001DBC;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="620" y="120" width="220" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="h5" value="人間の役割・注力点" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#104E8B;strokeColor=#001DBC;fontColor=#FFFFFF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="840" y="120" width="220" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- Row 1: Equivalence Partitioning -->
+    <mxCell id="r1c1" value="同値分割" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="60" y="170" width="160" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r1c2" value="入力を同じ動作をする集合に分け、&#10;代表値のみをテストする技法。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="220" y="170" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r1c3" value="「データ多様性の確保」&#10;学習データのバイアス検知&#10;ツールとして機能" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="420" y="170" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r1c4" value="仕様から同値クラスをAIに抽出させる。&#10;「有効/無効クラスを表形式で出力せよ」&#10;と指示する。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="620" y="170" width="220" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r1c5" value="抽出されたクラスが&#10;「ビジネス的に意味があるか」を判断。&#10;バイアスの有無をレビュー。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="840" y="170" width="220" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- Row 2: Boundary Value Analysis -->
+    <mxCell id="r2c1" value="境界値分析" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="60" y="270" width="160" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r2c2" value="境界付近でバグが発生しやすい&#10;経験則に基づく重点テスト。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="220" y="270" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r2c3" value="「決定境界の探索」&#10;AI予測が不安定になる境界や&#10;RAG検索精度の閾値検証" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="420" y="270" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r2c4" value="基本的な境界値（&lt;, &lt;=, &gt;）は&#10;AIに自動生成させる。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="620" y="270" width="220" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r2c5" value="「隠れた境界」や非線形な挙動の特定。&#10;仕様書にない暗黙の制限を見つける。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="840" y="270" width="220" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- Row 3: Decision Table -->
+    <mxCell id="r3c1" value="デシジョンテーブル" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="60" y="370" width="160" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r3c2" value="条件と動作の組み合わせを&#10;網羅的に整理する技法。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="220" y="370" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r3c3" value="「ロジックの制約定義」&#10;AIへの厳密な仕様指示書として機能し、&#10;ハルシネーションを抑制" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="420" y="370" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r3c4" value="自然言語よりも表形式の論理定義を&#10;AIに与えてコード生成させる。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="620" y="370" width="220" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r3c5" value="表の論理的整合性・抜け漏れ確認。&#10;確率的挙動ではなく&#10;確定的ルールに限定して適用する。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="840" y="370" width="220" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- Row 4: State Transition Testing -->
+    <mxCell id="r4c1" value="状態遷移テスト" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="60" y="470" width="160" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r4c2" value="状態とイベントによる&#10;システムの遷移を検証する。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="220" y="470" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r4c3" value="「コンテキスト維持の検証」&#10;チャットボット等が対話履歴に基づき&#10;正しく遷移できるかを検証" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="420" y="470" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r4c4" value="AIに遷移図を描かせ、&#10;ペアプログラミング的に修正する。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="620" y="470" width="220" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r4c5" value="抜け漏れ（到達不能状態など）の指摘。&#10;コンテキスト喪失による&#10;不正遷移の監視。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="840" y="470" width="220" height="100" as="geometry" />
+    </mxCell>
+
+    <!-- Row 5: Use Case Testing -->
+    <mxCell id="r5c1" value="ユースケーステスト" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=14;align=center;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="60" y="570" width="160" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r5c2" value="ユーザーの利用シナリオに基づく&#10;機能検証。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="220" y="570" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r5c3" value="「E2Eプロンプト生成の基盤」&#10;シナリオエクスプロージョンによる&#10;網羅的な検証への進化" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="420" y="570" width="200" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r5c4" value="ユーザーシナリオ自体をAIに生成させ、&#10;大量のエッジケースを提案させる。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontSize=13;align=left;spacing=8;" vertex="1" parent="1">
+      <mxGeometry x="620" y="570" width="220" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="r5c5" value="悪意ある入力、中断、例外フローなど&#10;AIが想定しにくい人間的挙動の設計。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;align=left;spacing=8;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="840" y="570" width="220" height="100" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

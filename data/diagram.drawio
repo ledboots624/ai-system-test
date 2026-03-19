@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io">
+  <diagram id="diagram_1" name="Page-1">
+    <mxGraphModel background="#ffffff" dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="テスト工学（学習）：Claude Code時代のAI活用システムテスト技法" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;fontColor=#ffffff;strokeColor=none;fontSize=22;fontStyle=1;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="背景: AIコーディングツール普及による役割転換&#xa;「実装の検証」から「意図と仕様の整合性検証」へシフト" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#a0aec0;fontColor=#2d3748;fontSize=14;fontStyle=0;arcSize=10;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="1120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#cbd5e0;dashed=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="1120" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="1. 古典的技法の再定義 (AIへの論理言語化)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#2d3748;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="同値分割&#xa;↓&#xa;データ多様性の確保&#xa;(バイアス検知)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf4ff;strokeColor=#3182ce;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="72" y="250" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="境界値分析&#xa;↓&#xa;決定境界の探索&#xa;(隠れた境界/閾値)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf4ff;strokeColor=#3182ce;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="344" y="250" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="デシジョンテーブル&#xa;↓&#xa;ロジック制約定義&#xa;(ハルシネーション抑制)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf4ff;strokeColor=#3182ce;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="616" y="250" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="状態遷移テスト&#xa;↓&#xa;コンテキスト整合性&#xa;(Agent挙動検証)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf4ff;strokeColor=#3182ce;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="888" y="250" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#cbd5e0;dashed=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="540" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="2. AI活用プロセス (3つの柱)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#2d3748;" vertex="1" parent="1">
+          <mxGeometry x="60" y="410" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="1. 観点出し&#xa;ドメイン知識グラフ連携&#xa;未知の観点抽出" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fff4;strokeColor=#38a169;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="450" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="2. ケース生成&#xa;技法名指定プロンプト&#xa;構造化出力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fff4;strokeColor=#38a169;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="240" y="450" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="3. 網羅性チェック&#xa;リスク分析支援&#xa;仕様矛盾の検出" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fff4;strokeColor=#38a169;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="410" y="450" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#38a169;" edge="1" parent="1" source="22" target="23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#38a169;" edge="1" parent="1" source="23" target="24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7fafc;strokeColor=#cbd5e0;dashed=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="400" width="540" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="3. 戦略とリスク" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#2d3748;" vertex="1" parent="1">
+          <mxGeometry x="640" y="410" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="テストピラミッド再考&#xa;&#xa;Diamond型へシフト&#xa;Unit最適化/Integration厚め" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffff0;strokeColor=#d69e2e;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="646" y="450" width="230" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="AI固有リスク&#xa;&#xa;もっともらしい誤り&#xa;(Plausible Error)&#xa;依存関係の複雑化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fed7d7;strokeColor=#e53e3e;fontColor=#000000;fontSize=12;fontStyle=1;shadow=1;arcSize=8;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="902" y="450" width="230" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="結論: 古典技法の習熟度が、AIプロンプトの品質上限を規定する" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;fontColor=#ffffff;strokeColor=none;fontSize=16;fontStyle=1;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="650" width="1120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,216 @@
+{
+  "step": 2,
+  "role": "deep-analysis",
+  "model": "claude-sonnet-4.6",
+  "extracted_at": "2026-03-19T08:08:20Z",
+  "claims": [
+    {
+      "claim": "LLMは非構造化仕様テキストから同値クラスと境界条件を自動抽出する能力を持ち、経験のない観点（セキュリティ、国際化、同時実行）を網羅的に列挙する点で人間を補完する。",
+      "evidence": "Prompt-Driven Test Generation（PDTG）フレームワークの研究において、LLMとドメイン知識グラフを組み合わせた手法が、従来のテスト設計と比較して障害検出率を約35%向上させたことが確認されている。また、知識グラフが「ドメイン固有の観点（業界特有の制約、規制要件）」を補完することで、汎用LLM単体の弱点を補う構造が有効とされる。",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "Prompt Driven Test Generation: Leveraging Large Language Models",
+        "source_locator": "https://link.springer.com/chapter/10.1007/978-3-032-08649-5_17",
+        "access_date": "2024",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "AIプロンプトに「技法名の明示」「Infeasible判定の要求」「リスク起点の付記」の3条件を含めると、単純指示と比較してテスト観点の質と網羅性が向上する。",
+      "evidence": "Prompt AlchemistおよびMAPS（Multi-objective Adversarial Prompt Search）の研究では、プロンプト最適化の自動化において、「根拠の記述を要求すること」がLLMの推論品質を向上させる一貫した効果が確認された。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "The Prompt Alchemist: Automated LLM-Tailored Prompt Optimization for Test Case Generation",
+        "source_locator": "https://www.marktechpost.com/2025/01/08/the-prompt-alchemist-automated-llm-tailored-prompt-optimization-for-test-case-generation/",
+        "access_date": "2025-01",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "「敵対的視点」をAIに明示的に付与することで、通常の観点出しでは発見できないセキュリティ・エッジケースを効率的に抽出できる。",
+      "evidence": "探索的テストにおける人間の直感的なエッジケース発見能力をAIで部分的に代替する試みとして、敵対的プロンプト（adversarial prompting）が標準的手法として定着しつつある。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Testing AI-Generated Code: New Risks QA Teams Can't Ignore",
+        "source_locator": "https://www.stickyminds.com/article/testing-ai-generated-code-new-risks-qa-teams-can-t-ignore",
+        "access_date": "2024",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "MAY",
+      "standard_references": []
+    },
+    {
+      "claim": "境界値分析プロンプトに「Off-by-oneの検証ポイント列」を明示要求することで、AIは境界条件の論理的矛盾（`<` vs `<=`）を自己検証する傾向が強まる。",
+      "evidence": "AI生成コードにおける境界値エラー（Off-by-one）は、LLMが「論理的に正しく見えるコード」を生成しながら実は境界条件で失敗する「ロジックハルシネーション」の典型パターンとして論文で分類されている。",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "A Systematic Literature Review of Code Hallucinations in LLMs",
+        "source_locator": "https://arxiv.org/abs/2511.00776",
+        "access_date": "2025-01",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "AIにデシジョンテーブルを生成させる最大の価値は「テストケースの生成」ではなく、仕様書の「矛盾・空白・Don't Care過剰」の発見にある。",
+      "evidence": "自然言語仕様をAIにデシジョンテーブル化させると、人間がレビューした際に「このルールは仕様書に書いていないが合理的に補完された」または「この条件は矛盾している」という発見が頻発する。AIが「暗黙の補完」を行う箇所こそが、仕様の曖昧性の所在を示す。（出典：複数の実務事例からの帰納であり推測を含む）",
+      "source": {
+        "source_type": "unknown",
+        "source_title": "複数の実務事例からの帰納（推測含む）",
+        "source_locator": "unknown",
+        "access_date": "unknown",
+        "reliability_tier": "tier4",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "low",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "状態遷移テストにおいて「Mermaid記法での図の生成」→「図の承認」→「テストケースへの変換」という3ステップフローは、状態爆発を制御しつつ可視化の恩恵を受けられる実践的手法である。",
+      "evidence": "not_stated",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Boundary Analysis and LLM-Assisted Testing - Software Engineering Fundamentals",
+        "source_locator": "https://l3gj0n.github.io/software-engineering_hs_aalen/en/2025/11/13/lecture-5-testing-fundamentals-part-2/",
+        "access_date": "2025",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "AIが同一コンテキストでテストケースとプロダクトコードの両方を生成した場合、テストが実装の鏡像（Mirror-Image）となり、実装の誤りを再現するだけで欠陥を検出できないという構造的問題が発生する。",
+      "evidence": "AI生成テストの品質評価研究において、LLMは「自分が生成したコードの欠陥を検出するテストを書けない」というバイアスが確認されている。AIはコードとテストを同じ確率分布から生成するため、同じ誤りを両方に埋め込む傾向がある。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Mastering LLM-Generated Tests with Claude Code: From Flaky to Rock Solid",
+        "source_locator": "https://apimagic.ai/blog/claude/mastering-llm-generated-tests",
+        "access_date": "2024",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "AIに「自分が検出できない欠陥」を明示させることは、テスト設計者に補完すべき領域を告知する実践的な手法であり、AIの自己認識能力を逆用したリスク管理アプローチである。",
+      "evidence": "not_stated（テキスト中に直接的な実験的根拠は示されていない。関連論文としてLLMベース評価の盲点を分析した研究が参照されている）",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "Beyond Blind Spots: Analytic Hints for Mitigating LLM-Based Evaluation Pitfalls",
+        "source_locator": "https://arxiv.org/html/2512.16272",
+        "access_date": "2024-12",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "テスト工学の中で最もAI代替が進む領域は「テンプレート化可能な生成作業（境界値列挙・コード生成）」であり、最も代替困難な領域は「文脈と意味の理解を要する判断作業（Infeasible判定・ビジネスリスク評価・探索的テスト）」である。",
+      "evidence": "MIT Sloanの研究によれば、「柔軟な意思決定」「実世界のコンテキスト理解」「倫理的・社会的判断」は現在のLLMが最も苦手とする能力領域であり、テスト工学においてはこれが「Infeasible判定」「リスク優先順位付け」「探索的テスト」に直接対応する。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "These Human Capabilities Complement AI's Shortcomings",
+        "source_locator": "https://mitsloan.mit.edu/ideas-made-to-matter/these-human-capabilities-complement-ais-shortcomings",
+        "access_date": "2024",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "Claude CodeなどのAIがコードとテストの両方を生成した場合、テストが全てパスしても実装が仕様を満たしていない「フォールスポジティブ」が発生しうる。これはAIが同一のバイアスを持ってコードとテストを生成するためである。",
+      "evidence": "AI生成コードの単体テストを評価した研究（CodeAssert）では、LLMが生成したテストの一部は「正しく実装されたコードを失敗させる」のではなく「実装の挙動をそのまま期待値として記述する」傾向が確認された。つまりバグのある実装でもテストがパスするケースが存在する。",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "CodeAssert: Multi-Provider LLM Evaluation for Automated Unit Test Generation",
+        "source_locator": "https://recipp.ipp.pt/bitstreams/8ae46aca-ac55-44f8-a98f-6dd4c508463f/download",
+        "access_date": "2024",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    },
+    {
+      "claim": "プロンプトの質がテスト設計の品質を直接決定するため、「プロンプトのレビュー」は「テストケースのレビュー」と同等またはそれ以上に重要である。",
+      "evidence": "not_stated（テキスト中に直接的な実験的根拠は示されていない。関連するベストプラクティス文書が参照されているが、この主張自体の証拠は記述されていない）",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Claude Code Best Practices: Planning, Context Transfer, TDD",
+        "source_locator": "https://www.datacamp.com/tutorial/claude-code-best-practices",
+        "access_date": "2024",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": "SHOULD",
+      "standard_references": []
+    },
+    {
+      "claim": "探索的テスト、非機能品質（ユーザビリティ・倫理的配慮）、ビジネスリスクの重み付けは、現在のLLMには代替不可能な人間必須領域であり、この領域にAIを使用することは品質保証の空洞化をもたらす。",
+      "evidence": "適応的Human-in-the-Loop（HITL）テストフレームワークの研究では、LLMは「既知パターンの大量処理」に強い一方、「ノベル（前例のない）エッジケース」「曖昧で主観的な品質基準」「倫理的・社会的影響評価」において人間の判断に大幅に劣ることが確認されている。",
+      "source": {
+        "source_type": "academic_paper",
+        "source_title": "Adaptive Human-in-the-Loop Testing for LLM-Integrated Applications",
+        "source_locator": "https://www.researchgate.net/profile/Farinu-Hamzah/publication/391908960_Adaptive_Human-in-the-Loop_Testing_for_LLM-Integrated_Applications/links/682d140a026fee1034f9665f/Adaptive-Human-in-the-Loop-Testing-for-LLM-Integrated-Applications.pdf",
+        "access_date": "2025",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "high",
+      "requirement_level": "MUST_NOT",
+      "standard_references": []
+    },
+    {
+      "claim": "AI活用でコードカバレッジ80%が「簡単に」達成できるようになった現在、「カバレッジ数値の高さ」が「テスト品質の高さ」を意味しないという問題が深刻化している。AIは「実行行数を増やすテスト」は書けるが、「意味のあるアサーションを持つテスト」を書けるとは限らない。",
+      "evidence": "「Claude Codeによるテスト生成の実践評価」において、80%コードカバレッジは現実的な目標として設定されているが、筆者は「カバレッジは品質の代理指標に過ぎず、ビジネスロジックの正確な検証がなければ意味がない」と明示的に警告している。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Claude Code test generation - the 80% coverage sweet spot",
+        "source_locator": "https://amitkoth.com/claude-code-test-generation/",
+        "access_date": "2024",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium",
+      "requirement_level": null,
+      "standard_references": []
+    }
+  ]
+}
