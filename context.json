@@ -1,0 +1,12 @@
+{
+  "context_type": "person_profile",
+  "description": "質問者のエンジニアプロフィール（AIツール開発の前提知識）",
+  "data": {
+    "role": "フルスタックエンジニア",
+    "skills_software": ["Webアプリケーション開発", "スマートフォンアプリ開発", "マイコンファームウェア開発"],
+    "skills_hardware": ["電子回路設計（デジタル系）"],
+    "programming_languages": "多数（幅広い言語経験あり）",
+    "strengths": "ソフトウェア〜ハードウェアまで横断的な技術スタック",
+    "perspective": "実装者視点でのAIツール開発に関心がある"
+  }
+}
